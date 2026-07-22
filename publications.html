@@ -5,314 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iva Janković — Home</title>
   <style>
-    /* Modern Root Variables */
     :root {
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      --deep-blue: #0A1C35;       
-      --edinburgh-red: #D50032;   
-      --bg-light: #f8fafc;
-      --card-bg: #ffffff;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --sidebar-width: 280px;
-      --right-sidebar-width: 250px; 
+      --bg-color: #fffff8;
+      --text-main: #111111;
+      --text-muted: #444444;
+      --link-color: #8b0000;
+      --border-light: #e5e5e5;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body { 
-      font-family: var(--font-sans); 
-      background-color: var(--bg-light); 
-      color: var(--text-main); 
-      display: flex; 
-      min-height: 100vh; 
-      line-height: 1.6; 
+    body {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      background-color: var(--bg-color); color: var(--text-main);
+      line-height: 1.7; padding: 3rem 2rem; max-width: 1200px; margin: 0 auto;
     }
+    .site-nav {
+      margin-bottom: 4rem; border-bottom: 1px solid var(--border-light); padding-bottom: 1rem;
+      display: flex; gap: 2rem;
+    }
+    .site-nav a {
+      text-decoration: none; font-family: -apple-system, sans-serif;
+      font-size: 0.9rem; font-weight: 600; color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .site-nav a:hover, .site-nav a.active { color: var(--link-color); }
     
-    /* Left Sidebar Navigation (Fixed) */
-    .sidebar { 
-      width: var(--sidebar-width); 
-      background-color: var(--deep-blue); 
-      color: #ffffff; 
-      position: fixed; 
-      left: 0;
-      top: 0;
-      height: 100vh; 
-      padding: 3rem 2rem; 
-      display: flex; 
-      flex-direction: column; 
-      box-shadow: 4px 0 15px rgba(0,0,0,0.1); 
-      z-index: 10; 
-      align-items: center; 
-      text-align: center;
-    }
-
-    /* Profile Image Styling */
-    .profile-img-container {
-      width: 180px;
-      height: 220px; 
-      margin-bottom: 1.5rem;
-      border-radius: 12px; 
-      overflow: hidden;
-      border: 3px solid var(--edinburgh-red);
-      background-color: #fff;
-      flex-shrink: 0;
-    }
-
-    .profile-img-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .profile-header h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.25rem; color: #ffffff; }
-    .profile-header p { color: #94a3b8; font-size: 0.85rem; line-height: 1.4; margin-bottom: 2rem; }
+    .layout-grid { display: grid; grid-template-columns: 2.5fr 1fr; gap: 4rem; }
+    @media (max-width: 900px) { .layout-grid { grid-template-columns: 1fr; } }
     
-    .nav-buttons { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; }
-    .nav-btn { 
-      background: rgba(255, 255, 255, 0.05); 
-      color: #e2e8f0; 
-      text-decoration: none; 
-      padding: 0.85rem 1.25rem; 
-      border-radius: 8px; 
-      font-weight: 500; 
-      font-size: 0.95rem; 
-      transition: all 0.2s ease; 
-      border-left: 4px solid transparent;
-      text-align: left; 
-    }
-    .nav-btn:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
-    .nav-btn.active { 
-      background: rgba(255, 255, 255, 0.15); 
-      color: #ffffff; 
-      border-left-color: var(--edinburgh-red); 
-      font-weight: 600; 
-    }
+    h1 { font-weight: normal; font-size: 2.4rem; margin-bottom: 1.5rem; }
+    p { margin-bottom: 1.5rem; font-size: 1.1rem; }
+    a { color: var(--link-color); text-decoration: none; }
+    a:hover { text-decoration: underline; }
     
-    /* Central Scrolling Main Content Area */
-    .main-content { 
-      margin-left: var(--sidebar-width); 
-      margin-right: var(--right-sidebar-width); 
-      padding: 4rem 5rem; 
-      flex: 1; 
-      max-width: 1000px; 
+    .margin-note {
+      background-color: #f5f5f0; padding: 1.2rem; margin-bottom: 2rem;
+      border-left: 3px solid var(--link-color); font-size: 0.9rem;
+      font-family: -apple-system, sans-serif; color: var(--text-muted);
     }
-    
-    .page-title { 
-      font-size: 2.2rem; 
-      color: var(--deep-blue); 
-      margin-bottom: 1.5rem; 
-    }
-    
-    .intro-text {
-      font-size: 1.1rem;
-      color: var(--text-main);
-      margin-bottom: 1.5rem;
-      text-align: justify;
-    }
-
-    /* Modern Timeline for Updates */
-    .section-title {
-      font-size: 1.8rem;
-      color: var(--deep-blue);
-      border-bottom: 2px solid var(--card-bg);
-      padding-bottom: 0.5rem;
-      margin-bottom: 2rem;
-      margin-top: 4rem;
-    }
-
-    .timeline {
-      position: relative;
-      margin-left: 1rem;
-      padding-left: 2rem;
-      border-left: 2px solid #cbd5e1;
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2rem;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -2.4rem; 
-      top: 0.25rem;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-color: var(--edinburgh-red);
-      border: 3px solid var(--bg-light);
-    }
-
-    .timeline-date {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--edinburgh-red);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .timeline-content {
-      background: var(--card-bg);
-      padding: 1.25rem 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-      border-left: 3px solid var(--deep-blue);
-      transition: transform 0.2s ease;
-    }
-
-    .timeline-content:hover {
-      transform: translateX(4px);
-    }
-
-    .timeline-content p {
-      font-size: 0.95rem;
-      margin: 0;
-      color: var(--text-main);
-    }
-
-    /* Right Sidebar for Logos (Fixed to Top Right) */
-    .right-sidebar {
-      width: var(--right-sidebar-width);
-      position: fixed;
-      right: 0;
-      top: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start; /* Changed from center to push items to the top */
-      align-items: center;
-      gap: 3.5rem;
-      padding: 4rem 2rem 2rem 2rem; /* 4rem top padding matches the main-content padding */
-      background-color: transparent;
-      z-index: 5;
-    }
-
-    /* Interactive Links for Logos */
-    .right-sidebar a {
-      display: block;
-      transition: transform 0.2s ease;
-    }
-
-    .right-sidebar a:hover {
-      transform: scale(1.05);
-    }
-
-    /* Increased Logo Size */
-    .right-sidebar img {
-      max-width: 100%;
-      max-height: 130px; 
-      object-fit: contain;
-      display: block;
-    }
-
-    /* Mobile & Tablet Responsiveness */
-    @media (max-width: 1100px) {
-      body { flex-direction: column; }
-      
-      .sidebar, .right-sidebar { 
-        width: 100%; 
-        height: auto; 
-        position: relative; 
-      }
-      
-      .main-content { 
-        margin-left: 0; 
-        margin-right: 0; 
-        padding: 2rem; 
-      }
-      
-      .right-sidebar { 
-        flex-direction: row; 
-        flex-wrap: wrap; 
-        justify-content: center; 
-        padding-top: 1rem;
-        padding-bottom: 3rem;
-        gap: 2.5rem;
-      }
-    }
+    .margin-note h4 { color: var(--text-main); text-transform: uppercase; margin-bottom: 0.5rem; }
   </style>
 </head>
 <body>
 
-  <!-- Left Sidebar Navigation -->
-  <aside class="sidebar">
-    <div class="profile-img-container">
-      <img src="downloads/IMG_0903.jpg" alt="Iva Janković Profile Picture">
-    </div>
+  <nav class="site-nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="research.html">Research</a>
+    <a href="cv.html">Curriculum Vitae</a>
+    <a href="publications.html">Publications</a>
+  </nav>
 
-    <div class="profile-header">
+  <main class="layout-grid">
+    <div class="main-column">
       <h1>Iva Janković</h1>
-      <p>Doctoral Researcher<br>University of Edinburgh</p>
+      <p>
+        I am a doctoral researcher at the UKRI AI Centre for Doctoral Training in Biomedical Innovation, situated within the School of Informatics at the University of Edinburgh.
+      </p>
+      <p>
+        My core scientific work focuses on the development and application of hard mathematical algorithms, specifically within high-dimensional geometry, convex polytopes, and randomised geometric sampling. I am particularly interested in mapping graph topologies to system stability, and deploying uniform sampling primitives to analyze metabolic networks and topological properties of gene regulatory networks.
+      </p>
+      <p>
+        I am co-supervised by Dr. Filippo Menolascina and Dr. Vissarion Fisikopoulos.
+      </p>
+      <p>
+        Please navigate to the <a href="research.html">Research</a> page for a comprehensive structural overview of my PhD framework regarding synthetic lethal metabolic interventions.
+      </p>
     </div>
-    
-    <nav class="nav-buttons">
-      <a href="index.html" class="nav-btn active">Home</a>
-      <a href="research.html" class="nav-btn">Research</a>
-      <a href="cv.html" class="nav-btn">Curriculum Vitae</a>
-      <a href="publications.html" class="nav-btn">Publications</a>
-    </nav>
-  </aside>
 
-  <!-- Central Content Area -->
-  <main class="main-content">
-    <h1 class="page-title">About Me</h1>
-    
-    <p class="intro-text">
-      I am a PhD student and doctoral researcher at the UKRI AI Centre for Doctoral Training in Biomedical Innovation, based within the School of Informatics at the University of Edinburgh. My doctoral training framework is co-supervised by Dr. Filippo Menolascina and Dr. Vissarion Fisikopoulos.
-    </p>
-    
-    <p class="intro-text">
-      My current research explores the intersection of computational biology, high-dimensional geometry, and control theory. I focus on developing learning algorithms for discovering synthetic lethal metabolic interventions, utilizing randomized geometric sampling algorithms to evaluate biological robustness and analyze the topological properties of gene regulatory networks. 
-    </p>
-
-    <p class="intro-text">
-      Prior to joining the University of Edinburgh, I earned my Bachelor of Science with Honours in Biomedical Engineering from the Faculty of Technical Sciences at the University of Novi Sad. 
-    </p>
-
-    <!-- Latest Updates Section -->
-    <h2 class="section-title">Latest Updates</h2>
-    
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">Summer 2026</div>
-        <div class="timeline-content">
-          <p>Structuring the technical development roadmap for an incremental volume-update software framework, moving from brute-force baselines to parallel annealed updates.</p>
-        </div>
+    <aside class="margin-column">
+      <div class="margin-note">
+        <h4>Contact & Links</h4>
+        <p>School of Informatics<br>University of Edinburgh<br>Edinburgh, UK</p>
+        <p style="margin-top: 1rem;">
+          <a href="#">GitHub</a><br>
+          <a href="#">Google Scholar</a><br>
+          <a href="#">LinkedIn</a>
+        </p>
       </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">March 2026</div>
-        <div class="timeline-content">
-          <p>Awarded 2nd place at the Edinburgh Biohackathon with team "BioAvengers" for developing a genome-scale metabolic modeling utility.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">August 2025</div>
-        <div class="timeline-content">
-          <p>Successfully completed my tenure as a Google Summer of Code contributor with the GeomScale organization, implementing Shake and Bake boundary uniform sampling algorithms.</p>
-        </div>
-      </div>
-    </div>
+    </aside>
   </main>
-
-  <!-- Right Sidebar for Logos with Hyperlinks -->
-  <aside class="right-sidebar">
-    <a href="https://informatics.ed.ac.uk/" target="_blank" rel="noopener noreferrer">
-      <img src="logos/InformaticsUni_RGB-removebg-preview (2).png" alt="University of Edinburgh, School of Informatics">
-    </a>
-    
-    <a href="https://ai4bi-cdt.ed.ac.uk/" target="_blank" rel="noopener noreferrer">
-      <img src="logos/AI4BI logo colour (1).png" alt="UKRI AI Centre for Doctoral Training in Biomedical Innovation">
-    </a>
-    
-    <a href="https://www.ukri.org/" target="_blank" rel="noopener noreferrer">
-      <img src="logos/UKRI_Horizontal_RGB (1).png" alt="UK Research and Innovation">
-    </a>
-  </aside>
 
 </body>
 </html>
