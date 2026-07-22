@@ -68,7 +68,7 @@
     .research-card h3 {
       font-size: 1.4rem;
       color: var(--deep-blue);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .module { margin-bottom: 1.5rem; }
@@ -77,34 +77,22 @@
     .module ul li { position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-muted); }
     .module ul li::before { content: "•"; color: var(--edinburgh-red); font-weight: bold; position: absolute; left: 0; top: 0; }
 
-    /* Layout specifically for the rich thesis section */
-    .thesis-layout {
+    /* Media row for Slide and Video Side-by-Side */
+    .media-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-top: 1rem;
-    }
-    
-    .material-context h5 {
-      font-size: 1.05rem;
-      color: var(--deep-blue);
-      margin-top: 1.5rem;
-      margin-bottom: 0.25rem;
-    }
-    
-    .material-context p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      text-align: justify;
+      gap: 2rem;
+      align-items: center;
+      margin-top: 2rem;
     }
 
     .thesis-slide {
       width: 100%;
+      height: auto;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 1.5rem;
       border: 1px solid #e2e8f0;
+      display: block;
     }
 
     /* Video Embed Container */
@@ -130,8 +118,8 @@
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
-      margin-bottom: 2rem;
-      margin-top: 2rem;
+      margin-bottom: 1rem;
+      margin-top: 1.5rem;
     }
 
     .btn-download {
@@ -164,12 +152,19 @@
       .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; }
       .main-content { margin-left: 0; padding: 2rem; }
       .research-grid { grid-template-columns: 1fr; }
-      .thesis-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .media-row { grid-template-columns: 1fr; }
     }
   </style>
   
-  <!-- Optional: MathJax script for rendering LaTeX equations on the web -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!-- MathJax Configuration to strictly parse $ for inline equations -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
@@ -285,42 +280,39 @@
       <article class="research-card" style="border-top: 4px solid var(--edinburgh-red);">
         <h3>Pathophysiological Cardiovascular Dynamics: Real and Complex Fractional Order Models</h3>
         
-        <div class="thesis-layout">
-          
-          <!-- Left Column: Text and Context -->
-          <div class="thesis-text">
-            <h4 style="color: var(--deep-blue); font-size: 1.15rem; margin-bottom: 0.5rem;">Project Overview</h4>
-            <p style="margin-bottom: 1rem; color: var(--text-main); text-align: justify;">
-              This research focuses on developing highly accurate and interpretable mathematical models of the cardiovascular circulatory system to aid in the prediction of cardiovascular diseases. By analyzing clinical blood pressure data in the frequency domain via Bode plots, the study evaluates the cardiovascular system across four interconnected compartments. The core finding demonstrates that a streamlined 5-parameter fractional-order model captures heart dynamics with the same accuracy as a highly complex 20-parameter integer-order (ARX) model.
-            </p>
-
-            <div class="material-context">
-              <h5>1. Bachelor Thesis Document</h5>
-              <p>The comprehensive manuscript detailing the theoretical formulation of the non-integer models, the data acquisition protocols, and the non-parametric parameter identification process utilizing the particle swarm optimization (PSO) algorithm.</p>
-              
-              <h5>2. Conference Proceedings (MMSC 2024)</h5>
-              <p>A peer-reviewed publication summarizing the comparative performance and frequency response analysis between standard integer-order models and the proposed fractional approach.</p>
-
-              <h5>3. 3MT Presentation & Slide</h5>
-              <p>An award-winning presentation translating the mathematical complexity into the intuitive analogy of a "musical equalizer." The accompanying slide visualizes the Bode plot (magnitude and phase) for left atrium–left ventricle dynamics, explicitly contrasting the opaque ARX difference equation $A(q)y(k) = B(q)u(k-d) + e(k)$ with the interpretable fractional transfer function $G(s)$. It highlights how critical frequencies ($\omega$) identify <em>when</em> dynamic changes occur, while the fractional orders ($\alpha$) define <em>how strong</em> those changes are.</p>
-            </div>
-            
-            <div class="button-group">
-              <a href="downloads/Bachelor_Thesis_Iva_Jankovic.pdf" class="btn-download" download>Download Thesis (.pdf)</a>
-              <a href="downloads/MMSC_2024_pages_109-125.pdf" class="btn-download secondary" download>Download Proceedings (.pdf)</a>
-            </div>
-          </div>
-
-          <!-- Right Column: Media (Slide and Video) -->
-          <div class="thesis-media">
-            <img src="downloads/3MT Slide.png" alt="3MT Presentation Slide showing Bode plot and transfer function" class="thesis-slide">
-            
-            <div class="video-container">
-              <iframe src="https://www.youtube.com/embed/G6x2JG2lNRw" title="Iva Jankovic - Fractional modelling of cardiovascular circulatory system" allowfullscreen></iframe>
-            </div>
-          </div>
-
+        <div style="margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.95rem;">
+          <strong>Automatic Control Group, University of Novi Sad</strong> (July 2024 – April 2025)<br>
+          <em>Supervisor:</em> Mirna Kapetina Radović
         </div>
+        
+        <p style="margin-bottom: 1rem; color: var(--text-main); text-align: justify;">
+          This research focuses on developing highly accurate and interpretable mathematical models of the cardiovascular circulatory system to aid in the prediction of cardiovascular diseases. By analyzing clinical blood pressure data in the frequency domain via Bode plots, the study evaluates the cardiovascular system across four interconnected compartments. The core finding demonstrates that a streamlined 5-parameter fractional-order model captures heart dynamics with the same accuracy as a highly complex 20-parameter integer-order (ARX) model.
+        </p>
+
+        <p style="margin-bottom: 1rem; color: var(--text-main); text-align: justify;">
+          The results of this research were successfully published and presented at the 3rd International Workshop on Mathematical Modeling and Scientific Computing (MMSC 2024). A comprehensive breakdown of the theoretical formulation and non-parametric parameter identification process is available in the original Bachelor Thesis (written in Serbian). 
+        </p>
+
+        <p style="margin-bottom: 1rem; color: var(--text-main); text-align: justify;">
+          To communicate these findings to a broader audience, the core concepts were distilled into a 3 Minute Thesis (3MT) presentation, which won 2nd place at the BH Futures Foundation competition. The presentation analogizes the complex mathematics to a "musical equalizer", explicitly contrasting the opaque ARX difference equation $A(q)y(k) = B(q)u(k-d) + e(k)$ with the interpretable fractional transfer function $G(s)$. It highlights how critical frequencies ($\omega$) identify <em>when</em> dynamic changes occur, while the fractional orders ($\alpha$) define <em>how strong</em> those changes are.
+        </p>
+
+        <div class="button-group">
+          <a href="downloads/Bachelor_Thesis_Iva_Jankovic.pdf" class="btn-download" download>Download Thesis (Serbian)</a>
+          <a href="downloads/MMSC_2024_pages_109-125.pdf" class="btn-download secondary" download>Download Proceedings (.pdf)</a>
+        </div>
+
+        <!-- Slide and Video Side-by-Side -->
+        <div class="media-row">
+          <div class="slide-container">
+            <img src="downloads/3MT Slide.png" alt="3MT Presentation Slide showing Bode plot and transfer function" class="thesis-slide">
+          </div>
+          
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/G6x2JG2lNRw" title="Iva Jankovic - Fractional modelling of cardiovascular circulatory system" allowfullscreen></iframe>
+          </div>
+        </div>
+        
       </article>
     </div>
 
@@ -344,17 +336,6 @@
       <article class="research-card">
         <h3>Research Intern</h3>
         <div class="module">
-          <h4>Automatic Control Group, University of Novi Sad (Jul 2024 - Apr 2025)</h4>
-          <ul>
-            <li>Explored non-integer approaches to the mathematical modelling of the cardiovascular circulatory system.</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="research-card">
-        <h3>Research Intern</h3>
-        <div class="module">
           <h4>BIOMEC Lab, Universitat Politècnica de Catalunya, Barcelona (Jul 2023 - Sep 2023)</h4>
           <ul>
             <li>Executed predictive simulations utilizing 2D HAT models.</li>
@@ -363,7 +344,7 @@
         </div>
       </article>
 
-      <!-- Card 4 -->
+      <!-- Card 3 -->
       <article class="research-card">
         <h3>Research Intern</h3>
         <div class="module">
