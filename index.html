@@ -188,7 +188,7 @@
       padding: 5rem 2rem 2rem 2rem; 
       background-color: transparent;
       z-index: 5;
-      border-left: 2px solid #cbd5e1; /* Vertical line added here */
+      border-left: 2px solid #cbd5e1;
     }
 
     /* Interactive Links for Logos */
@@ -232,8 +232,8 @@
         padding-top: 2rem;
         padding-bottom: 3rem;
         gap: 2.5rem;
-        border-left: none; /* Removes vertical line on smaller screens */
-        border-top: 2px solid #cbd5e1; /* Adds horizontal line instead */
+        border-left: none; 
+        border-top: 2px solid #cbd5e1; 
       }
     }
   </style>
@@ -242,9 +242,8 @@
 
   <!-- Left Sidebar Navigation -->
   <aside class="sidebar">
-    <!-- Path correctly points to the downloads folder -->
     <div class="profile-img-container">
-      <img src="downloads/IMG_0903.JPG" alt="Iva Janković Profile Picture">
+      <img src="downloads/IMG_0903.jpg" alt="Iva Janković Profile Picture">
     </div>
 
     <div class="profile-header">
@@ -283,24 +282,10 @@
       <div class="timeline-item">
         <div class="timeline-date">Summer 2026</div>
         <div class="timeline-content">
-          <p>Structuring the technical development roadmap for an incremental volume-update software framework, moving from brute-force baselines to parallel annealed updates.</p>
+          <p>Trial.</p>
         </div>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-date">March 2026</div>
-        <div class="timeline-content">
-          <p>Awarded 2nd place at the Edinburgh Biohackathon with team "BioAvengers" for developing a genome-scale metabolic modeling utility.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">August 2025</div>
-        <div class="timeline-content">
-          <p>Successfully completed my tenure as a Google Summer of Code contributor with the GeomScale organization, implementing Shake and Bake boundary uniform sampling algorithms.</p>
-        </div>
-      </div>
-    </div>
   </main>
 
   <!-- Right Sidebar for Logos with Hyperlinks -->
@@ -309,289 +294,7 @@
       <img src="logos/InformaticsUni_RGB-removebg-preview (2).png" alt="University of Edinburgh, School of Informatics">
     </a>
     
-    <a href="https://biomedicalai.inf.ed.ac.uk/" target="_blank" rel="noopener noreferrer">
-      <img src="logos/AI4BI logo colour (1).png" alt="UKRI AI Centre for Doctoral Training in Biomedical Innovation">
-    </a>
-    
-    <a href="https://www.ukri.org/" target="_blank" rel="noopener noreferrer">
-      <img src="logos/UKRI_Horizontal_RGB (1).png" alt="UK Research and Innovation">
-    </a>
-  </aside>
-
-</body>
-</html>      position: fixed; 
-      left: 0;
-      top: 0;
-      height: 100vh; 
-      padding: 3rem 2rem; 
-      display: flex; 
-      flex-direction: column; 
-      box-shadow: 4px 0 15px rgba(0,0,0,0.1); 
-      z-index: 10; 
-      align-items: center; 
-      text-align: center;
-    }
-
-    /* Profile Image Styling */
-    .profile-img-container {
-      width: 180px;
-      height: 220px; 
-      margin-bottom: 1.5rem;
-      border-radius: 12px; 
-      overflow: hidden;
-      border: 3px solid var(--deep-blue);
-      background-color: #fff;
-      flex-shrink: 0;
-    }
-
-    .profile-img-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .profile-header h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.25rem; color: #ffffff; }
-    .profile-header p { color: #94a3b8; font-size: 0.85rem; line-height: 1.4; margin-bottom: 2rem; }
-    
-    .nav-buttons { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; }
-    .nav-btn { 
-      background: rgba(255, 255, 255, 0.05); 
-      color: #e2e8f0; 
-      text-decoration: none; 
-      padding: 0.85rem 1.25rem; 
-      border-radius: 8px; 
-      font-weight: 500; 
-      font-size: 0.95rem; 
-      transition: all 0.2s ease; 
-      border-left: 4px solid transparent;
-      text-align: left; 
-    }
-    .nav-btn:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
-    .nav-btn.active { 
-      background: rgba(255, 255, 255, 0.15); 
-      color: #ffffff; 
-      border-left-color: var(--edinburgh-red); 
-      font-weight: 600; 
-    }
-    
-    /* Central Scrolling Main Content Area */
-    .main-content { 
-      margin-left: var(--sidebar-width); 
-      margin-right: var(--right-sidebar-width); 
-      padding: 4rem 5rem; 
-      flex: 1; 
-      max-width: 1000px; 
-    }
-    
-    .page-title { 
-      font-size: 2.2rem; 
-      color: var(--deep-blue); 
-      margin-bottom: 1.5rem; 
-    }
-    
-    .intro-text {
-      font-size: 1.1rem;
-      color: var(--text-main);
-      margin-bottom: 1.5rem;
-      text-align: justify;
-    }
-
-    /* Modern Timeline for Updates */
-    .section-title {
-      font-size: 1.8rem;
-      color: var(--deep-blue);
-      border-bottom: 2px solid var(--card-bg);
-      padding-bottom: 0.5rem;
-      margin-bottom: 2rem;
-      margin-top: 4rem;
-    }
-
-    .timeline {
-      position: relative;
-      margin-left: 1rem;
-      padding-left: 2rem;
-      border-left: 2px solid #cbd5e1;
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2rem;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -2.4rem; 
-      top: 0.25rem;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-color: var(--edinburgh-red);
-      border: 3px solid var(--bg-light);
-    }
-
-    .timeline-date {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--edinburgh-red);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .timeline-content {
-      background: var(--card-bg);
-      padding: 1.25rem 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-      border-left: 3px solid var(--deep-blue);
-      transition: transform 0.2s ease;
-    }
-
-    .timeline-content:hover {
-      transform: translateX(4px);
-    }
-
-    .timeline-content p {
-      font-size: 0.95rem;
-      margin: 0;
-      color: var(--text-main);
-    }
-
-    /* Right Sidebar for Logos */
-    .right-sidebar {
-      width: var(--right-sidebar-width);
-      position: fixed;
-      right: 0;
-      top: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 4rem; /* Increased gap to add more space between logos */
-      padding: 5rem 2rem 2rem 2rem; /* Increased top padding to push the first logo down a bit */
-      background-color: transparent;
-      z-index: 5;
-    }
-
-    /* Interactive Links for Logos */
-    .right-sidebar a {
-      display: block;
-      transition: transform 0.2s ease;
-    }
-
-    .right-sidebar a:hover {
-      transform: scale(1.05);
-    }
-
-    /* Logo Sizing */
-    .right-sidebar img {
-      max-width: 100%;
-      max-height: 130px; 
-      object-fit: contain;
-      display: block;
-    }
-
-    /* Mobile & Tablet Responsiveness */
-    @media (max-width: 1100px) {
-      body { flex-direction: column; }
-      
-      .sidebar, .right-sidebar { 
-        width: 100%; 
-        height: auto; 
-        position: relative; 
-      }
-      
-      .main-content { 
-        margin-left: 0; 
-        margin-right: 0; 
-        padding: 2rem; 
-      }
-      
-      .right-sidebar { 
-        flex-direction: row; 
-        flex-wrap: wrap; 
-        justify-content: center; 
-        padding-top: 1rem;
-        padding-bottom: 3rem;
-        gap: 2.5rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Left Sidebar Navigation -->
-  <aside class="sidebar">
-    <!-- Path correctly points to the downloads folder -->
-    <div class="profile-img-container">
-      <img src="downloads/IMG_0903.JPG" alt="Iva Janković Profile Picture">
-    </div>
-
-    <div class="profile-header">
-      <h1>Iva Janković</h1>
-      <p>Doctoral Researcher<br>University of Edinburgh</p>
-    </div>
-    
-    <nav class="nav-buttons">
-      <a href="index.html" class="nav-btn active">Home</a>
-      <a href="research.html" class="nav-btn">Research</a>
-      <a href="cv.html" class="nav-btn">Curriculum Vitae</a>
-      <a href="publications.html" class="nav-btn">Publications</a>
-    </nav>
-  </aside>
-
-  <!-- Central Content Area -->
-  <main class="main-content">
-    <h1 class="page-title">About Me</h1>
-    
-    <p class="intro-text">
-      I am a PhD student and doctoral researcher at the UKRI AI Centre for Doctoral Training in Biomedical Innovation, based within the School of Informatics at the University of Edinburgh. My doctoral training framework is co-supervised by Dr. Filippo Menolascina and Dr. Vissarion Fisikopoulos.
-    </p>
-    
-    <p class="intro-text">
-      My current research explores the intersection of computational biology, high-dimensional geometry, and control theory. I focus on developing learning algorithms for discovering synthetic lethal metabolic interventions, utilizing randomized geometric sampling algorithms to evaluate biological robustness and analyze the topological properties of gene regulatory networks. 
-    </p>
-
-    <p class="intro-text">
-      Prior to joining the University of Edinburgh, I earned my Bachelor of Science with Honours in Biomedical Engineering from the Faculty of Technical Sciences at the University of Novi Sad. 
-    </p>
-
-    <!-- Latest Updates Section -->
-    <h2 class="section-title">Latest Updates</h2>
-    
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">Summer 2026</div>
-        <div class="timeline-content">
-          <p>Structuring the technical development roadmap for an incremental volume-update software framework, moving from brute-force baselines to parallel annealed updates.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">March 2026</div>
-        <div class="timeline-content">
-          <p>Awarded 2nd place at the Edinburgh Biohackathon with team "BioAvengers" for developing a genome-scale metabolic modeling utility.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">August 2025</div>
-        <div class="timeline-content">
-          <p>Successfully completed my tenure as a Google Summer of Code contributor with the GeomScale organization, implementing Shake and Bake boundary uniform sampling algorithms.</p>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- Right Sidebar for Logos with Hyperlinks -->
-  <aside class="right-sidebar">
-    <a href="https://www.ed.ac.uk/informatics" target="_blank" rel="noopener noreferrer">
-      <img src="logos/InformaticsUni_RGB-removebg-preview (2).png" alt="University of Edinburgh, School of Informatics">
-    </a>
-    
-    <a href="https://biomedicalai.inf.ed.ac.uk/" target="_blank" rel="noopener noreferrer">
+    <a href="https://ai4bi-cdt.ed.ac.uk/" target="_blank" rel="noopener noreferrer">
       <img src="logos/AI4BI logo colour (1).png" alt="UKRI AI Centre for Doctoral Training in Biomedical Innovation">
     </a>
     
