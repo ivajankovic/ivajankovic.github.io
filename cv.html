@@ -1,121 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iva Janković | CV</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iva Janković — CV</title>
+  <style>
+    /* Paste the identical CSS from index.html here for consistency */
+    :root { --bg-color: #fffff8; --text-main: #111111; --text-muted: #444444; --link-color: #8b0000; --border-light: #e5e5e5; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.7; padding: 3rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .site-nav { margin-bottom: 4rem; border-bottom: 1px solid var(--border-light); padding-bottom: 1rem; display: flex; gap: 2rem; }
+    .site-nav a { text-decoration: none; font-family: -apple-system, sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--text-muted); transition: color 0.2s; }
+    .site-nav a:hover, .site-nav a.active { color: var(--link-color); }
+    
+    h1 { font-weight: normal; font-size: 2.4rem; margin-bottom: 3rem; }
+    h2 { font-weight: normal; font-size: 1.6rem; color: var(--link-color); border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 3rem; }
+    
+    .cv-item { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 600px) { .cv-item { grid-template-columns: 1fr; gap: 0.5rem; } }
+    
+    .cv-date { font-family: -apple-system, sans-serif; font-size: 0.9rem; color: var(--text-muted); padding-top: 0.3rem; }
+    .cv-content h3 { font-size: 1.15rem; margin-bottom: 0.2rem; }
+    .cv-content h4 { font-size: 1rem; font-weight: normal; font-style: italic; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .cv-content ul { list-style-type: square; padding-left: 1.2rem; font-size: 0.95rem; }
+  </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 font-sans antialiased flex flex-col md:flex-row min-h-screen">
+<body>
 
-    <aside class="w-full md:w-64 bg-zinc-950 md:h-screen md:sticky md:top-0 border-b md:border-b-0 md:border-r border-zinc-900 p-8 flex flex-col justify-between shrink-0">
-        <div class="space-y-8">
-            <div class="space-y-1">
-                <h2 class="text-lg font-bold tracking-tight text-zinc-100">Iva Janković</h2>
-                <p class="text-xs text-zinc-500">PhD Student @ Informatics</p>
-            </div>
-            <nav class="flex flex-wrap md:flex-col gap-2 text-sm font-medium">
-                <a href="index.html" class="w-full flex items-center gap-3 text-zinc-400 hover:text-zinc-200 py-1.5 px-3 rounded-lg">Home</a>
-                <a href="research.html" class="w-full flex items-center gap-3 text-zinc-400 hover:text-zinc-200 py-1.5 px-3 rounded-lg">Research</a>
-                <a href="publications.html" class="w-full flex items-center gap-3 text-zinc-400 hover:text-zinc-200 py-1.5 px-3 rounded-lg">Publications</a>
-                <a href="cv.html" class="w-full flex items-center gap-3 text-indigo-400 py-1.5 px-3 bg-zinc-900/50 rounded-lg border border-zinc-800/40">Curriculum Vitae</a>
-            </nav>
-        </div>
-    </aside>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="research.html">Research</a>
+    <a href="cv.html" class="active">Curriculum Vitae</a>
+    <a href="publications.html">Publications</a>
+  </nav>
 
-    <main class="flex-1 max-w-3xl px-6 py-12 md:py-24 md:px-16 space-y-16">
-        <header class="space-y-2">
-            <h1 class="text-3xl font-bold tracking-tight text-zinc-50">Curriculum Vitae</h1>
-            <p class="text-xs text-zinc-500 font-light">Academic & Professional Timeline</p>
-        </header>
+  <h1>Curriculum Vitae</h1>
 
-        <section class="space-y-6">
-            <div class="flex items-center gap-3 border-b border-zinc-900 pb-2">
-                <h2 class="text-xs font-semibold tracking-widest text-zinc-400 uppercase">Education</h2>
-            </div>
-            <div class="space-y-8 pl-1">
-                <div class="flex flex-col md:flex-row md:justify-between items-start gap-1">
-                    <div>
-                        <h3 class="text-sm font-semibold text-zinc-200">The University of Edinburgh</h3>
-                        <p class="text-xs text-indigo-400 font-medium mt-0.5">PhD with Integrated Study in Artificial Intelligence for Biomedical Innovation</p>
-                        <p class="text-xs text-zinc-400 mt-2 font-light leading-relaxed">
-                            <span class="text-zinc-500">Thesis:</span> Learning Algorithms for Discovering Synthetic Lethal Metabolic Interventions in Cancer <br>
-                            <span class="text-zinc-500">Supervisors:</span> Dr Filippo Menolascina, Dr Vissarion Fisikopoulos
-                        </p>
-                    </div>
-                    <span class="text-xs text-zinc-500 font-medium whitespace-nowrap">Sep 2025 — Aug 2029</span>
-                </div>
-                <div class="flex flex-col md:flex-row md:justify-between items-start gap-1">
-                    <div>
-                        <h3 class="text-sm font-semibold text-zinc-200">Faculty of Technical Sciences, University of Novi Sad</h3>
-                        <p class="text-xs text-indigo-400 font-medium mt-0.5">Bachelor's Degree in Biomedical/Medical Engineering</p>
-                        <p class="text-xs text-zinc-400 mt-2 font-light leading-relaxed">
-                            <span class="text-zinc-500">Grade:</span> 9.89 / 10.00 <br>
-                            <span class="text-zinc-500">Thesis:</span> Pathophysiological Cardiovascular Dynamics: Real and Complex Fractional-Order Models
-                        </p>
-                    </div>
-                    <span class="text-xs text-zinc-500 font-medium whitespace-nowrap">Oct 2021 — Nov 2025</span>
-                </div>
-            </div>
-        </section>
+  <h2>Education</h2>
+  <div class="cv-item">
+    <div class="cv-date">Current</div>
+    <div class="cv-content">
+      <h3>Ph.D. Researcher</h3>
+      <h4>UKRI AI Centre for Doctoral Training in Biomedical Innovation, University of Edinburgh</h4>
+      <ul>
+        <li>Supervised by Dr. Filippo Menolascina and Dr. Vissarion Fisikopoulos.</li>
+        <li>Research focused on high-dimensional geometry and dynamical viability filtering for synthetic lethal interventions.</li>
+      </ul>
+    </div>
+  </div>
 
-        <section class="space-y-6">
-            <div class="flex items-center gap-3 border-b border-zinc-900 pb-2">
-                <h2 class="text-xs font-semibold tracking-widest text-zinc-400 uppercase">Research Experience</h2>
-            </div>
-            <div class="space-y-8 pl-1">
-                <div class="flex flex-col md:flex-row md:justify-between items-start gap-1">
-                    <div>
-                        <h3 class="text-sm font-semibold text-zinc-200">Doctoral Researcher</h3>
-                        <p class="text-xs text-zinc-400 mt-0.5">UKRI AI Centre for Doctoral Training in Biomedical Innovation</p>
-                    </div>
-                    <span class="text-xs text-zinc-500 font-medium whitespace-nowrap">Sep 2025 — Present</span>
-                </div>
-                <div class="flex flex-col md:flex-row md:justify-between items-start gap-1">
-                    <div>
-                        <h3 class="text-sm font-semibold text-zinc-200">GSoC 2025 Contributor</h3>
-                        <p class="text-xs text-zinc-400 mt-0.5">Google Summer of Code · Internship</p>
-                        <p class="text-xs text-zinc-500 mt-1 font-light">
-                            <span class="text-zinc-500">Project:</span> Shake and Bake - Sampling from the boundary of convex polytopes <br>
-                            <a href="https://summerofcode.withgoogle.com/programs/2025/projects/7DtNTtFc" target="_blank" class="text-indigo-400 hover:underline">View Archive ↗</a>
-                        </p>
-                    </div>
-                    <span class="text-xs text-zinc-500 font-medium whitespace-nowrap">May 2025 — Aug 2025</span>
-                </div>
-                <div class="flex flex-col md:flex-row md:justify-between items-start gap-1">
-                    <div>
-                        <h3 class="text-sm font-semibold text-zinc-200">Bachelor Thesis Research</h3>
-                        <p class="text-xs text-zinc-400 mt-0.5">Automatic Control Group, Faculty of Technical Sciences, UNS</p>
-                    </div>
-                    <span class="text-xs text-zinc-500 font-medium whitespace-nowrap">Jul 2024 — Apr 2025</span>
-                </div>
-                <div class="flex flex-col md:flex-row md:justify-between items-start gap-1">
-                    <div>
-                        <h3 class="text-sm font-semibold text-zinc-200">Research Intern</h3>
-                        <p class="text-xs text-zinc-400 mt-0.5">Biomechanical Engineering Lab (BIOMEC-UPC) · Barcelona, Spain</p>
-                    </div>
-                    <span class="text-xs text-zinc-500 font-medium whitespace-nowrap">Jul 2023 — Sep 2023</span>
-                </div>
-                <div class="flex flex-col md:flex-row md:justify-between items-start gap-1">
-                    <div>
-                        <h3 class="text-sm font-semibold text-zinc-200">Trainee</h3>
-                        <p class="text-xs text-zinc-400 mt-0.5">Department of Technical Mechanics, University of Novi Sad</p>
-                    </div>
-                    <span class="text-xs text-zinc-500 font-medium whitespace-nowrap">Oct 2022 — Jul 2023</span>
-                </div>
-                <div class="flex flex-col md:flex-row md:justify-between items-start gap-1">
-                    <div>
-                        <h3 class="text-sm font-semibold text-zinc-200">Student Researcher</h3>
-                        <p class="text-xs text-zinc-400 mt-0.5">Petnica Science Center</p>
-                    </div>
-                    <span class="text-xs text-zinc-500 font-medium whitespace-nowrap">2018 — 2019</span>
-                </div>
-            </div>
-        </section>
-    </main>
+  <div class="cv-item">
+    <div class="cv-date">Completed</div>
+    <div class="cv-content">
+      <h3>B.Sc. with Honours in Biomedical Engineering</h3>
+      <h4>Faculty of Technical Sciences, University of Novi Sad</h4>
+      <ul>
+        <li>Cumulative GPA: 9.89/10.00</li>
+        <li>Undergraduate Thesis supervised by Mirna Radović.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Research & Professional Experience</h2>
+  <div class="cv-item">
+    <div class="cv-date">May 2025 – Aug 2025</div>
+    <div class="cv-content">
+      <h3>Open-Source Software Intern (Google Summer of Code)</h3>
+      <h4>GeomScale Organization</h4>
+      <ul>
+        <li>Implemented Shake and Bake boundary uniform sampling algorithms.</li>
+        <li>Mentored by Vissarion Fisikopoulos, Elias Tsigaridas, and Apostolos Chalkis.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cv-item">
+    <div class="cv-date">Jul 2024 – Apr 2025</div>
+    <div class="cv-content">
+      <h3>Automatic Control Laboratory Researcher</h3>
+      <h4>University of Novi Sad</h4>
+      <ul>
+        <li>Conducted non-integer mathematical modeling of the cardiovascular circulatory system.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cv-item">
+    <div class="cv-date">Jul 2023 – Sep 2023</div>
+    <div class="cv-content">
+      <h3>Structural Bioengineering Intern</h3>
+      <h4>Biomechanical Engineering Lab (BIOMEC-UPC), Barcelona</h4>
+      <ul>
+        <li>Executed predictive simulations on lower-body kinematics utilizing 2D HAT models.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cv-item">
+    <div class="cv-date">Oct 2022 – Jul 2023</div>
+    <div class="cv-content">
+      <h3>Research Trainee</h3>
+      <h4>Department of Technical Mechanics, University of Novi Sad</h4>
+      <ul>
+        <li>Focused on the fractional modeling of viscoelastic materials.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Awards & Honors</h2>
+  <div class="cv-item">
+    <div class="cv-date">Mar 2026</div>
+    <div class="cv-content">
+      <h3>Edinburgh Biohackathon — 2nd Place</h3>
+      <h4>Team: BioAvengers</h4>
+      <ul>
+        <li>Developed and presented a genome-scale metabolic modeling utility over a 48-hour development sprint.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Technical Proficiencies</h2>
+  <div class="cv-item">
+    <div class="cv-date">Tooling</div>
+    <div class="cv-content">
+      <ul>
+        <li><strong>Languages & Environments:</strong> Python, C++, Git configuration, and remote server management.</li>
+        <li><strong>Documentation & Visualization:</strong> LaTeX (Tufte documentation styles), TikZ vector graphics design.</li>
+      </ul>
+    </div>
+  </div>
+
 </body>
 </html>
