@@ -34,8 +34,42 @@
     .main-content { margin-left: var(--sidebar-width); padding: 4rem 5rem; flex: 1; max-width: 1200px; }
     .page-title { font-size: 2.2rem; color: var(--deep-blue); margin-bottom: 3rem; }
     
-    .section-title { font-size: 1.6rem; color: var(--deep-blue); border-bottom: 2px solid var(--card-bg); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    .section-title { font-size: 1.6rem; color: var(--deep-blue); border-bottom: 2px solid var(--card-bg); padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
     
+    .sub-section-title {
+      font-size: 1.25rem;
+      color: var(--text-main);
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid var(--edinburgh-red);
+      padding-left: 0.75rem;
+    }
+    
+    /* Download Archive Folder Box */
+    .download-archive-box {
+      background-color: #f1f5f9;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .download-archive-text h4 { 
+      color: var(--deep-blue); 
+      margin-bottom: 0.25rem; 
+      font-size: 1.1rem;
+    }
+    
+    .download-archive-text p { 
+      font-size: 0.9rem; 
+      color: var(--text-muted); 
+    }
+
     /* Expandable Publication Cards */
     .publication-item {
       background: var(--card-bg);
@@ -56,7 +90,7 @@
       position: relative;
     }
     
-    .publication-item summary::-webkit-details-marker { display: none; } /* Hide default arrow */
+    .publication-item summary::-webkit-details-marker { display: none; } 
 
     .publication-item summary:hover {
       background-color: #f1f5f9;
@@ -106,6 +140,17 @@
 
     .pub-abstract p { font-size: 0.95rem; color: var(--text-muted); text-align: justify; }
 
+    .pub-abstract ul {
+      margin-top: 0.5rem;
+      padding-left: 1.25rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+    
+    .pub-abstract ul li {
+      margin-bottom: 0.25rem;
+    }
+
     /* Screenshot Styling */
     .pub-screenshot {
       display: flex;
@@ -135,9 +180,21 @@
       font-size: 0.85rem;
       font-weight: 600;
       transition: background 0.2s;
+      text-align: center;
     }
 
     .btn-download:hover { background-color: var(--edinburgh-red); }
+    
+    .btn-download.secondary {
+      background-color: transparent;
+      border: 1px solid var(--deep-blue);
+      color: var(--deep-blue);
+    }
+    
+    .btn-download.secondary:hover {
+      background-color: var(--deep-blue);
+      color: #fff;
+    }
 
     @media (max-width: 900px) {
       body { flex-direction: column; }
@@ -145,6 +202,7 @@
       .main-content { margin-left: 0; padding: 2rem; }
       .pub-content { grid-template-columns: 1fr; }
       .pub-screenshot img { max-width: 100%; }
+      .download-archive-box { flex-direction: column; text-align: center; gap: 1rem; }
     }
   </style>
 </head>
@@ -171,6 +229,19 @@
 
     <h2 class="section-title">Undergraduate Research</h2>
 
+    <!-- Download Archive Box -->
+    <div class="download-archive-box">
+      <div class="download-archive-text">
+        <h4>Conference Presentations Archive</h4>
+        <p>A complete repository containing all downloadable undergraduate conference slide decks, poster PDFs, and associated materials.</p>
+      </div>
+      <!-- REPLACE 'Undergrad_Presentations.zip' with your actual zip file name -->
+      <a href="Undergrad_Presentations.zip" class="btn-download" download>Download Folder (.zip)</a>
+    </div>
+
+    <!-- SUB-CATEGORY: Conference Proceedings -->
+    <h3 class="sub-section-title">Conference Proceedings</h3>
+
     <!-- Publication 1 -->
     <details class="publication-item">
       <summary>
@@ -187,7 +258,6 @@
           </p>
         </div>
         <div class="pub-screenshot">
-          <!-- REPLACE 'paper1_screenshot.jpg' with your actual image file name -->
           <img src="paper1_screenshot.jpg" alt="Screenshot of Non-integer Approach to Modelling Compartments paper">
           <a href="#" class="btn-download">View Full Paper</a>
         </div>
@@ -210,7 +280,6 @@
           </p>
         </div>
         <div class="pub-screenshot">
-          <!-- REPLACE 'paper2_screenshot.jpg' with your actual image file name -->
           <img src="paper2_screenshot.jpg" alt="Screenshot of Predictive Simulations paper">
           <a href="#" class="btn-download">View Full Paper</a>
         </div>
@@ -233,9 +302,38 @@
           </p>
         </div>
         <div class="pub-screenshot">
-          <!-- REPLACE 'paper3_screenshot.jpg' with your actual image file name -->
           <img src="paper3_screenshot.jpg" alt="Screenshot of Parameter Identification paper">
           <a href="#" class="btn-download">View Full Paper</a>
+          <!-- Added secondary button for the specific PPT presentation download -->
+          <a href="#" class="btn-download secondary" style="margin-top: 0.5rem;">Download Presentation</a>
+        </div>
+      </div>
+    </details>
+
+    <!-- SUB-CATEGORY: Poster Presentations -->
+    <h3 class="sub-section-title">Poster Presentations</h3>
+    
+    <!-- Poster 1 -->
+    <details class="publication-item">
+      <summary>
+        <span class="pub-title">Parameter Identification of Viscoelastic Materials Using Different Deformation Velocities</span>
+        <span class="pub-authors">Iva R. Janković, Nenad M. Grahovac, Miodrag M. Žigić</span>
+        <span class="pub-venue">Summer School “Mechanics of active soft materials: experiments, theory, numerics, and applications”</span>
+      </summary>
+      
+      <div class="pub-content">
+        <div class="pub-abstract">
+          <h4>Abstract</h4>
+          <ul>
+            <li>Over the past few decades, polymers have gained popularity as a preferred engineering structural material due to their affordability, ease of processing, weight savings, corrosion resistance, and other notable benefits[cite: 7].</li>
+            <li>This paper investigates the influence of deformation rate on the values of parameters of the fractional Kelvin-Zener model[cite: 7].</li>
+            <li>The behavior of two viscoelastic materials was tested, with three sample groups formed for each material, all subjected to the same deformation speed[cite: 7].</li>
+            <li>The change in deformation speed affected the parameter values in a very similar manner for both materials[cite: 7].</li>
+          </ul>
+        </div>
+        <div class="pub-screenshot">
+          <img src="poster_como_screenshot.jpg" alt="Screenshot of Summer School Poster">
+          <a href="#" class="btn-download">Download Poster</a>
         </div>
       </div>
     </details>
