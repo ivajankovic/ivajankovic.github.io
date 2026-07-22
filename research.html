@@ -3,323 +3,215 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Research — Iva Janković</title>
+  <title>Iva Janković — Research</title>
+  <!-- Keep the exact same CSS as index.html, and add the grid styles below -->
   <style>
-    /* Academic / Tufte-Inspired Light Theme */
     :root {
-      --bg-color: #fffff8;
-      --text-main: #111111;
-      --text-muted: #444444;
-      --link-color: #8b0000;
-      --border-light: #e5e5e5;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --deep-blue: #0A1C35;
+      --edinburgh-red: #D50032;
+      --bg-light: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --sidebar-width: 280px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      line-height: 1.7;
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* Navigation */
-    .nav-header {
-      margin-bottom: 3rem;
-    }
-
-    .btn-back {
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.85rem;
-      color: var(--link-color);
-      border: 1px solid var(--link-color);
-      padding: 0.4rem 0.8rem;
-      border-radius: 3px;
-      transition: all 0.2s ease;
-    }
-
-    .btn-back:hover {
-      background-color: var(--link-color);
-      color: #ffffff;
-    }
-
-    /* Main Typography */
-    .title-section {
-      margin-bottom: 4rem;
-      border-bottom: 1px solid var(--border-light);
-      padding-bottom: 1.5rem;
-    }
-
-    .title-section h1 {
-      font-weight: normal;
-      font-size: 2.4rem;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-      max-width: 800px;
-    }
-
-    .title-section p {
-      font-style: italic;
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 800px;
-    }
-
-    /* Layout Grid: Main Content + Margin Notes */
-    .layout-grid {
+    body { font-family: var(--font-sans); background-color: var(--bg-light); color: var(--text-main); display: flex; min-height: 100vh; line-height: 1.6; }
+    
+    .sidebar { width: var(--sidebar-width); background-color: var(--deep-blue); color: #ffffff; position: fixed; height: 100vh; padding: 3rem 2rem; display: flex; flex-direction: column; box-shadow: 4px 0 15px rgba(0,0,0,0.1); z-index: 10; }
+    .profile-header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: #ffffff; }
+    .profile-header p { color: #94a3b8; font-size: 0.9rem; line-height: 1.4; margin-bottom: 2.5rem; }
+    .nav-buttons { display: flex; flex-direction: column; gap: 0.75rem; }
+    .nav-btn { background: rgba(255, 255, 255, 0.05); color: #e2e8f0; text-decoration: none; padding: 0.85rem 1.25rem; border-radius: 8px; font-weight: 500; font-size: 0.95rem; transition: all 0.2s ease; border-left: 4px solid transparent; }
+    .nav-btn:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+    .nav-btn.active { background: rgba(255, 255, 255, 0.15); color: #ffffff; border-left-color: var(--edinburgh-red); font-weight: 600; }
+    
+    .main-content { margin-left: var(--sidebar-width); padding: 4rem 5rem; flex: 1; max-width: 1400px; }
+    
+    /* Research Specific Styles */
+    .page-title { font-size: 2.2rem; color: var(--deep-blue); margin-bottom: 0.5rem; }
+    .page-subtitle { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem; max-width: 800px; }
+    
+    .research-grid {
       display: grid;
-      grid-template-columns: 2.5fr 1fr;
-      gap: 4rem;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
     }
 
-    @media (max-width: 900px) {
-      .layout-grid {
-        grid-template-columns: 1fr;
-      }
+    .research-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border-top: 4px solid var(--deep-blue);
+      transition: transform 0.2s ease;
+    }
+    
+    /* Splash of Red on hover */
+    .research-card:hover {
+      border-top: 4px solid var(--edinburgh-red);
+      transform: translateY(-2px);
     }
 
-    /* Pillars */
-    .pillar {
-      margin-bottom: 4rem;
-    }
-
-    .pillar h2 {
-      font-weight: normal;
-      font-size: 1.8rem;
+    .research-card h3 {
+      font-size: 1.4rem;
+      color: var(--deep-blue);
       margin-bottom: 1.5rem;
-      color: var(--link-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .module {
       margin-bottom: 1.5rem;
-      padding-left: 1rem;
-      border-left: 2px solid var(--border-light);
     }
 
-    .module h3 {
-      font-size: 1.15rem;
-      font-style: italic;
-      font-weight: normal;
-      margin-bottom: 0.4rem;
+    .module h4 {
+      font-size: 1.05rem;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
     }
 
     .module ul {
-      list-style-type: square;
-      padding-left: 1.5rem;
-      font-size: 1rem;
+      list-style-type: none;
+      padding-left: 0;
     }
 
     .module ul li {
-      margin-bottom: 0.3rem;
-    }
-
-    /* Margin Column for Badges/Notes */
-    .margin-column {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-
-    .margin-note {
-      background-color: #f5f5f0;
-      padding: 1.2rem;
-      margin-bottom: 2rem;
-      border-left: 3px solid #8b0000;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .margin-note h4 {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      position: relative;
+      padding-left: 1.25rem;
       margin-bottom: 0.5rem;
-      color: var(--text-main);
+      font-size: 0.95rem;
+      color: var(--text-muted);
     }
 
-    .badge-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      margin-top: 0.5rem;
+    /* Custom bullet points */
+    .module ul li::before {
+      content: "•";
+      color: var(--edinburgh-red);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
     }
 
-    .badge {
-      font-weight: 600;
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; }
+      .main-content { margin-left: 0; padding: 2rem; }
+      .research-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="nav-header">
-    <a href="index.html" class="btn-back">&larr; Back to Home</a>
-  </nav>
-
-  <!-- Title Section -->
-  <header class="title-section">
-    <h1>Learning Algorithms for Discovering Synthetic Lethal Metabolic Interventions</h1>
-    <p>Doctoral research framework integrating high-dimensional sampling, control-theoretic viability, game theory, and biological validation.</p>
-  </header>
-
-  <!-- Content Layout -->
-  <main class="layout-grid">
+  <!-- Left Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="profile-header">
+      <h1>Iva Janković</h1>
+      <p>Doctoral Researcher<br>University of Edinburgh</p>
+    </div>
     
-    <!-- Left Column: Core Research -->
-    <div class="main-column">
+    <nav class="nav-buttons">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="research.html" class="nav-btn active">Research</a>
+      <a href="cv.html" class="nav-btn">Curriculum Vitae</a>
+      <a href="publications.html" class="nav-btn">Publications</a>
+    </nav>
+  </aside>
+
+  <!-- Right Content Area -->
+  <main class="main-content">
+    <h1 class="page-title">Doctoral Research Framework</h1>
+    <p class="page-subtitle">Learning Algorithms for Discovering Synthetic Lethal Metabolic Interventions.</p>
+
+    <div class="research-grid">
       
-      <section class="pillar">
-        <h2>I. Computational Geometry</h2>
-        
+      <!-- Card 1 -->
+      <article class="research-card">
+        <h3>1. Computational Geometry</h3>
         <div class="module">
-          <h3>Boundary sampling of convex polytopes</h3>
+          <h4>Boundary sampling of convex polytopes</h4>
           <ul>
-            <li>Implementation of Billiard Walk and Shake-and-Bake Walk algorithms.</li>
+            <li>Billiard Walk & Shake-and-Bake Walk algorithms.</li>
             <li>Sampling boundary facets of feasible regions.</li>
-            <li>Detecting active constraints and collapse directions.</li>
-            <li>Supporting geometry-based vulnerability discovery.</li>
+            <li>Detects active constraints and collapse directions.</li>
           </ul>
         </div>
-
         <div class="module">
-          <h3>Geometric measures of biological robustness</h3>
+          <h4>Geometric measures of biological robustness</h4>
           <ul>
-            <li>Evaluating volume, anisotropy, and directional widths.</li>
-            <li>Analyzing boundary activity and active constraints.</li>
-            <li>Quantifying metabolic flexibility versus fragility beyond standard FBA/FVA pointwise analysis.</li>
+            <li>Volume, anisotropy, directional widths.</li>
+            <li>Beyond FBA/FVA pointwise analysis.</li>
           </ul>
         </div>
+      </article>
 
+      <!-- Card 2 -->
+      <article class="research-card">
+        <h3>2. Biocontrol & Dynamical Systems</h3>
         <div class="module">
-          <h3>Dynamic volume updating via random-walk sampling</h3>
+          <h4>Dynamical viability filtering for GRNs</h4>
           <ul>
-            <li>Managing sequential constraint additions (P₀ &supset; P₁ &supset; ... &supset; Pₜ).</li>
-            <li>Optimizing sample reuse and applying annealed cuts.</li>
-            <li>Formulating a scalable reward proxy for reinforcement learning frameworks.</li>
+            <li>Signed GRN topology: activation / repression.</li>
+            <li>Gauge-cooperativity as graph-computable certificate.</li>
+            <li>Polyhedral trapping blocks for attractor localisation.</li>
           </ul>
         </div>
-      </section>
+        <div class="module">
+          <h4>Topology refinement</h4>
+          <ul>
+            <li>Minimal edge deletion or sign-flip.</li>
+            <li>Distance-to-viability score preserve high-confidence edges.</li>
+          </ul>
+        </div>
+      </article>
 
-      <section class="pillar">
-        <h2>II. Biocontrol & Dynamical Systems</h2>
-        
+      <!-- Card 3 -->
+      <article class="research-card">
+        <h3>3. Game Theory & Reinforcement Learning</h3>
         <div class="module">
-          <h3>Dynamical viability filtering for GRNs</h3>
+          <h4>Game-theoretic intervention design</h4>
           <ul>
-            <li>Evaluating signed GRN topology (activation / repression).</li>
-            <li>Computing gauge-cooperativity as a graph-computable certificate.</li>
-            <li>Analyzing compact attractors under biological boundedness and polyhedral trapping blocks for attractor localisation.</li>
-            <li>Assessing robustness margins under kinetic uncertainty.</li>
+            <li>Interventions as players/actions.</li>
+            <li>Tumour vs healthy feasible spaces.</li>
+            <li>Potential game for stable multi-target strategies.</li>
           </ul>
         </div>
+        <div class="module">
+          <h4>RL for sequential intervention discovery</h4>
+          <ul>
+            <li>State = current constrained polytope.</li>
+            <li>Action = gene/reaction constraint.</li>
+            <li>Reward = selective robustness loss.</li>
+          </ul>
+        </div>
+      </article>
 
+      <!-- Card 4 -->
+      <article class="research-card">
+        <h3>4. Experimental Validation</h3>
         <div class="module">
-          <h3>Topology refinement</h3>
+          <h4>Cancer-specific models</h4>
           <ul>
-            <li>Framing failed GRNs as topology-editing problems.</li>
-            <li>Executing minimal edge deletion or sign-flip operations.</li>
-            <li>Utilizing distance-to-viability scores to preserve high-confidence biological edges.</li>
+            <li>Reconstruct tumour and healthy-cell GEMs.</li>
+            <li>Test whether better models improve geometry-based discovery.</li>
           </ul>
         </div>
-
         <div class="module">
-          <h3>Proof-of-concept validation</h3>
+          <h4>Experimental validation</h4>
           <ul>
-            <li>Testing on canonical GRN motifs (e.g., mutual repression toggle as a certified case).</li>
-            <li>Analyzing incoherent feed-forward loops as failed cases and the repressilator as an oscillatory non-certified case.</li>
-            <li>Simulating perturbations and comparing overall robustness.</li>
+            <li>Prioritise selective synthetic lethal candidates.</li>
+            <li>Validate with DepMap/gene essentiality data.</li>
           </ul>
         </div>
-      </section>
-
-      <section class="pillar">
-        <h2>III. Game Theory & Reinforcement Learning</h2>
-        
-        <div class="module">
-          <h3>Game-theoretic intervention design</h3>
-          <ul>
-            <li>Modeling interventions as players/actions within tumour versus healthy feasible spaces.</li>
-            <li>Defining utility functions (Tumour collapse - Healthy damage - Cost).</li>
-            <li>Evaluating potential games for stable multi-target strategies and establishing static baselines for intervention selection.</li>
-          </ul>
-        </div>
-
-        <div class="module">
-          <h3>Reinforcement learning for sequential discovery</h3>
-          <ul>
-            <li>Defining environment states as current constrained polytopes.</li>
-            <li>Defining actions as gene/reaction constraint additions.</li>
-            <li>Assigning rewards based on selective robustness loss.</li>
-            <li>Training policies to learn ordered intervention combinations.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="pillar">
-        <h2>IV. Biomedical Impact & Experimental Validation</h2>
-        
-        <div class="module">
-          <h3>Cancer-specific models</h3>
-          <ul>
-            <li>Reconstructing tumour and healthy-cell GEMs.</li>
-            <li>Comparing existing reconstruction methods.</li>
-            <li>Testing whether better models improve geometry-based discovery.</li>
-          </ul>
-        </div>
-
-        <div class="module">
-          <h3>Experimental validation</h3>
-          <ul>
-            <li>Prioritising selective synthetic lethal candidates.</li>
-            <li>Validating with DepMap and gene essentiality data.</li>
-            <li>Undertaking experimental missions in collaboration with biological research groups.</li>
-          </ul>
-        </div>
-      </section>
+      </article>
 
     </div>
-
-    <!-- Right Column: Margin Notes & Affiliations -->
-    <aside class="margin-column">
-      
-      <div class="margin-note">
-        <h4>Computational Geometry Support</h4>
-        <p>Research algorithms integrated and developed in collaboration with:</p>
-        <div class="badge-list">
-          <span class="badge">Google Summer of Code</span>
-          <span class="badge">GeomScale</span>
-          <span class="badge">National Technical University of Athens</span>
-        </div>
-      </div>
-
-      <div class="margin-note">
-        <h4>Biocontrol Network</h4>
-        <p>Dynamical systems evaluation supported by:</p>
-        <div class="badge-list">
-          <span class="badge">KTH Royal Institute of Technology</span>
-          <span class="badge">Digital Futures</span>
-        </div>
-      </div>
-
-      <div class="margin-note">
-        <h4>Validation Partners</h4>
-        <p>Empirical testing and structural modeling conducted alongside:</p>
-        <div class="badge-list">
-          <span class="badge">Human Technopole</span>
-        </div>
-      </div>
-
-    </aside>
-
   </main>
+
 </body>
 </html>
