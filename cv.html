@@ -3,132 +3,536 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iva Janković — CV</title>
+  <title>Iva Janković — Curriculum Vitae</title>
   <style>
-    /* Paste the identical CSS from index.html here for consistency */
-    :root { --bg-color: #fffff8; --text-main: #111111; --text-muted: #444444; --link-color: #8b0000; --border-light: #e5e5e5; }
+    /* Modern Root Variables */
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --deep-blue: #0A1C35;       /* Deep Academic Blue */
+      --edinburgh-red: #D50032;   /* University of Edinburgh Red */
+      --bg-light: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --sidebar-width: 280px;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.7; padding: 3rem 2rem; max-width: 1200px; margin: 0 auto; }
-    .site-nav { margin-bottom: 4rem; border-bottom: 1px solid var(--border-light); padding-bottom: 1rem; display: flex; gap: 2rem; }
-    .site-nav a { text-decoration: none; font-family: -apple-system, sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--text-muted); transition: color 0.2s; }
-    .site-nav a:hover, .site-nav a.active { color: var(--link-color); }
-    
-    h1 { font-weight: normal; font-size: 2.4rem; margin-bottom: 3rem; }
-    h2 { font-weight: normal; font-size: 1.6rem; color: var(--link-color); border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 3rem; }
-    
-    .cv-item { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; margin-bottom: 2rem; }
-    @media (max-width: 600px) { .cv-item { grid-template-columns: 1fr; gap: 0.5rem; } }
-    
-    .cv-date { font-family: -apple-system, sans-serif; font-size: 0.9rem; color: var(--text-muted); padding-top: 0.3rem; }
-    .cv-content h3 { font-size: 1.15rem; margin-bottom: 0.2rem; }
-    .cv-content h4 { font-size: 1rem; font-weight: normal; font-style: italic; color: var(--text-muted); margin-bottom: 0.5rem; }
-    .cv-content ul { list-style-type: square; padding-left: 1.2rem; font-size: 0.95rem; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      display: flex;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Left Sidebar Navigation */
+    .sidebar {
+      width: var(--sidebar-width);
+      background-color: var(--deep-blue);
+      color: #ffffff;
+      position: fixed;
+      height: 100vh;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+
+    .profile-header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+
+    .profile-header p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 2.5rem;
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.05);
+      color: #e2e8f0;
+      text-decoration: none;
+      padding: 0.85rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      border-left: 4px solid transparent;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
+
+    .nav-btn.active {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      border-left-color: var(--edinburgh-red);
+      font-weight: 600;
+    }
+
+    /* Main Content Area */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      padding: 4rem 5rem;
+      flex: 1;
+      max-width: 1200px;
+    }
+
+    .page-title {
+      font-size: 2.2rem;
+      color: var(--deep-blue);
+      margin-bottom: 3rem;
+    }
+
+    .content-box {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 3rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border-top: 5px solid var(--edinburgh-red);
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: var(--deep-blue);
+      border-bottom: 2px solid var(--bg-light);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .academic-level {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--edinburgh-red);
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .academic-level::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background-color: var(--bg-light);
+    }
+
+    /* CV Item Grid */
+    .cv-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cv-date {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding-top: 0.2rem;
+    }
+
+    .cv-details h3 {
+      font-size: 1.15rem;
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+    }
+
+    .cv-details h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .cv-details ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .cv-details ul li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .cv-details ul li::before {
+      content: "•";
+      color: var(--edinburgh-red);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .highlight {
+      font-weight: 600;
+      color: var(--deep-blue);
+    }
+
+    /* Contact Info Header */
+    .contact-bar {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .contact-bar a {
+      color: var(--edinburgh-red);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-bar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; }
+      .main-content { margin-left: 0; padding: 2rem; }
+      .content-box { padding: 2rem; }
+      .cv-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
   </style>
 </head>
 <body>
 
-  <nav class="site-nav">
-    <a href="index.html">Home</a>
-    <a href="research.html">Research</a>
-    <a href="cv.html" class="active">Curriculum Vitae</a>
-    <a href="publications.html">Publications</a>
-  </nav>
-
-  <h1>Curriculum Vitae</h1>
-
-  <h2>Education</h2>
-  <div class="cv-item">
-    <div class="cv-date">Current</div>
-    <div class="cv-content">
-      <h3>Ph.D. Researcher</h3>
-      <h4>UKRI AI Centre for Doctoral Training in Biomedical Innovation, University of Edinburgh</h4>
-      <ul>
-        <li>Supervised by Dr. Filippo Menolascina and Dr. Vissarion Fisikopoulos.</li>
-        <li>Research focused on high-dimensional geometry and dynamical viability filtering for synthetic lethal interventions.</li>
-      </ul>
+  <!-- Left Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="profile-header">
+      <h1>Iva Janković</h1>
+      <p>Doctoral Researcher<br>University of Edinburgh</p>
     </div>
-  </div>
+    
+    <nav class="nav-buttons">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="research.html" class="nav-btn">Research</a>
+      <a href="cv.html" class="nav-btn active">Curriculum Vitae</a>
+      <a href="publications.html" class="nav-btn">Publications</a>
+    </nav>
+  </aside>
 
-  <div class="cv-item">
-    <div class="cv-date">Completed</div>
-    <div class="cv-content">
-      <h3>B.Sc. with Honours in Biomedical Engineering</h3>
-      <h4>Faculty of Technical Sciences, University of Novi Sad</h4>
-      <ul>
-        <li>Cumulative GPA: 9.89/10.00</li>
-        <li>Undergraduate Thesis supervised by Mirna Radović.</li>
-      </ul>
+  <!-- Right Content Area -->
+  <main class="main-content">
+    <h1 class="page-title">Curriculum Vitae</h1>
+    
+    <div class="contact-bar">
+      <span>✉️ i.jankovic-3@sms.ed.ac.uk</span>
+      <span>🔗 <a href="https://linkedin.com">LinkedIn</a></span>
     </div>
-  </div>
 
-  <h2>Research & Professional Experience</h2>
-  <div class="cv-item">
-    <div class="cv-date">May 2025 – Aug 2025</div>
-    <div class="cv-content">
-      <h3>Open-Source Software Intern (Google Summer of Code)</h3>
-      <h4>GeomScale Organization</h4>
-      <ul>
-        <li>Implemented Shake and Bake boundary uniform sampling algorithms.</li>
-        <li>Mentored by Vissarion Fisikopoulos, Elias Tsigaridas, and Apostolos Chalkis.</li>
-      </ul>
-    </div>
-  </div>
+    <!-- Education Section -->
+    <section class="content-box">
+      <h2 class="section-title">Education</h2>
+      
+      <div class="academic-level">Postgraduate</div>
+      <div class="cv-item">
+        <div class="cv-date">2025 – 2029</div>
+        <div class="cv-details">
+          <h3>PhD with Integrated Study in AI for Biomedical Innovation</h3>
+          <h4>University of Edinburgh</h4>
+          <ul>
+            <li>Co-supervised by Dr. Filippo Menolascina and Dr. Vissarion Fisikopoulos.</li>
+            <li>Doctoral research framework focused on hard mathematical algorithms, geometric sampling, and synthetic lethal metabolic interventions.</li>
+          </ul>
+        </div>
+      </div>
 
-  <div class="cv-item">
-    <div class="cv-date">Jul 2024 – Apr 2025</div>
-    <div class="cv-content">
-      <h3>Automatic Control Laboratory Researcher</h3>
-      <h4>University of Novi Sad</h4>
-      <ul>
-        <li>Conducted non-integer mathematical modeling of the cardiovascular circulatory system.</li>
-      </ul>
-    </div>
-  </div>
+      <div class="academic-level">Undergraduate</div>
+      <div class="cv-item">
+        <div class="cv-date">2021 – 2025</div>
+        <div class="cv-details">
+          <h3>Bachelor with Honours in Biomedical Engineering</h3>
+          <h4>University of Novi Sad</h4>
+          <ul>
+            <li><span class="highlight">GPA: 9.89/10.00</span> (top 1% of the class), 240 ECTS[cite: 2].</li>
+            <li><strong>Bachelor thesis:</strong> Pathophysiological Cardiovascular Dynamics: Real and Complex Fractional Order Models[cite: 2].</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <div class="cv-item">
-    <div class="cv-date">Jul 2023 – Sep 2023</div>
-    <div class="cv-content">
-      <h3>Structural Bioengineering Intern</h3>
-      <h4>Biomechanical Engineering Lab (BIOMEC-UPC), Barcelona</h4>
-      <ul>
-        <li>Executed predictive simulations on lower-body kinematics utilizing 2D HAT models.</li>
-      </ul>
-    </div>
-  </div>
+    <!-- Research Placements Section -->
+    <section class="content-box">
+      <h2 class="section-title">Research Placements</h2>
+      
+      <div class="academic-level">Postgraduate</div>
+      <div class="cv-item">
+        <div class="cv-date">May 2025 – Aug 2025</div>
+        <div class="cv-details">
+          <h3>Google Summer of Code Contributor</h3>
+          <h4>GeomScale</h4>
+          <ul>
+            <li>Project: Shake and Bake - Sampling from the boundary of convex polytopes[cite: 2].</li>
+            <li>Mentors: Vissarion Fisikopoulos, Elias Tsigaridas, Apostolos Chalkis[cite: 2].</li>
+          </ul>
+        </div>
+      </div>
 
-  <div class="cv-item">
-    <div class="cv-date">Oct 2022 – Jul 2023</div>
-    <div class="cv-content">
-      <h3>Research Trainee</h3>
-      <h4>Department of Technical Mechanics, University of Novi Sad</h4>
-      <ul>
-        <li>Focused on the fractional modeling of viscoelastic materials.</li>
-      </ul>
-    </div>
-  </div>
+      <div class="academic-level">Undergraduate</div>
+      <div class="cv-item">
+        <div class="cv-date">Jul 2024 – Apr 2025</div>
+        <div class="cv-details">
+          <h3>Research Intern</h3>
+          <h4>Automatic Control group, University of Novi Sad</h4>
+          <ul>
+            <li>Non-integer approaches to mathematical modelling of cardiovascular circulatory system[cite: 2].</li>
+          </ul>
+        </div>
+      </div>
 
-  <h2>Awards & Honors</h2>
-  <div class="cv-item">
-    <div class="cv-date">Mar 2026</div>
-    <div class="cv-content">
-      <h3>Edinburgh Biohackathon — 2nd Place</h3>
-      <h4>Team: BioAvengers</h4>
-      <ul>
-        <li>Developed and presented a genome-scale metabolic modeling utility over a 48-hour development sprint.</li>
-      </ul>
-    </div>
-  </div>
+      <div class="cv-item">
+        <div class="cv-date">Jul 2023 – Sep 2023</div>
+        <div class="cv-details">
+          <h3>Research Intern</h3>
+          <h4>BIOMEC Lab, Universitat Politècnica de Catalunya, Barcelona</h4>
+          <ul>
+            <li>Predictive simulations using 2D HAT models: exploring the effects of changing stride length and speed[cite: 2].</li>
+          </ul>
+        </div>
+      </div>
 
-  <h2>Technical Proficiencies</h2>
-  <div class="cv-item">
-    <div class="cv-date">Tooling</div>
-    <div class="cv-content">
-      <ul>
-        <li><strong>Languages & Environments:</strong> Python, C++, Git configuration, and remote server management.</li>
-        <li><strong>Documentation & Visualization:</strong> LaTeX (Tufte documentation styles), TikZ vector graphics design.</li>
-      </ul>
-    </div>
-  </div>
+      <div class="cv-item">
+        <div class="cv-date">Oct 2022 – Jul 2023</div>
+        <div class="cv-details">
+          <h3>Research Intern</h3>
+          <h4>Department of Technical Mechanics, University of Novi Sad</h4>
+          <ul>
+            <li>Fractional modelling of behavior of viscoelastic materials[cite: 2].</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conference Papers Section -->
+    <section class="content-box">
+      <h2 class="section-title">Conference Papers</h2>
+      
+      <div class="academic-level">Undergraduate</div>
+      <div class="cv-item">
+        <div class="cv-date">2024</div>
+        <div class="cv-details">
+          <h3>Non-integer approach to modelling compartments of cardiovascular circulatory system</h3>
+          <h4>Janković I., Radović M.</h4>
+          <ul>
+            <li>Workshop on Mathematical Modeling and Scientific Computing, Technical University of Munich, Germany[cite: 2].</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-date">2023</div>
+        <div class="cv-details">
+          <h3>Predictive simulations capture the effect of changing stride length and speed on lower body kinematics</h3>
+          <h4>Janković I., Maceratesi F., Febrer-Nafría M.</h4>
+          <ul>
+            <li>The 6th International conference Mechanical Engineering in the 21st Century[cite: 2].</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-date">2023</div>
+        <div class="cv-details">
+          <h3>Parameter identification of viscoelastic materials using different deformation velocities</h3>
+          <h4>Janković I., Grahovac N., Žigić M.</h4>
+          <ul>
+            <li>9th International Congress of the Serbian Society of Mechanics[cite: 2].</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="content-box">
+      <h2 class="section-title">Awards</h2>
+      
+      <div class="academic-level">Postgraduate</div>
+      <div class="cv-item">
+        <div class="cv-date">2025</div>
+        <div class="cv-details">
+          <h3>3 Minute Thesis 2nd Place Award</h3>
+          <h4>Bosnia and Herzegovina Futures Fondation[cite: 2]</h4>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">2024 / 2025</div>
+        <div class="cv-details">
+          <h3>Dositeja Award</h3>
+          <h4>Foundation for Young Talents[cite: 2]</h4>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">2023 – 2025</div>
+        <div class="cv-details">
+          <h3>Dr. Milan Jelić Award</h3>
+          <h4>Government of Republic of Srpska[cite: 2]</h4>
+        </div>
+      </div>
+
+      <div class="academic-level">Undergraduate & Pre-University</div>
+      <div class="cv-item">
+        <div class="cv-date">2024</div>
+        <div class="cv-details">
+          <h3>MGI/Complete Genomics - Dr Rade Drmanac Award</h3>
+          <h4>Divac Fondation[cite: 2]</h4>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">2021</div>
+        <div class="cv-details">
+          <h3>Certificate of Excellence</h3>
+          <h4>Royal House Karađorđević[cite: 2]</h4>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">2021</div>
+        <div class="cv-details">
+          <h3>Valedictorian</h3>
+          <h4>Grammar School "Filip Višnjić"[cite: 2]</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic Training & Courses -->
+    <section class="content-box">
+      <h2 class="section-title">Academic Training & Courses</h2>
+      
+      <div class="academic-level">Undergraduate</div>
+      <div class="cv-item">
+        <div class="cv-date">Sep 2024</div>
+        <div class="cv-details">
+          <h3>Summer School on Optimization-based Control Systems: Theory & Applications</h3>
+          <h4>Università di Pisa, Italy[cite: 2]</h4>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">Aug 2024</div>
+        <div class="cv-details">
+          <h3>Summer School "Computational Tissue Biomechanics: From data acquisition to FEM modeling"</h3>
+          <h4>KTH Royal Institute of Technology, Stockholm, Sweden[cite: 2]</h4>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">Jul 2024</div>
+        <div class="cv-details">
+          <h3>Summer School "Mechanics of active soft materials: Experiments, Theory, Numerics, and Applications"</h3>
+          <h4>Lake Como School of Advanced Studies, Italy[cite: 2]</h4>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">2024</div>
+        <div class="cv-details">
+          <h3>Deep Reinforcement Learning: Modern Approach to Adaptive Optimal Control</h3>
+          <h4>SMIC[cite: 2]</h4>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">2024</div>
+        <div class="cv-details">
+          <h3>Training for Empowerment of Women Scientists for Innovation Entrepreneurship</h3>
+          <h4>UN[cite: 2]</h4>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">Feb 2024</div>
+        <div class="cv-details">
+          <h3>Winter School in Medical Engineering: Prosthetics, Materials and Medical Simulations</h3>
+          <h4>University of Applied Sciences, Linz, Austria[cite: 2]</h4>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">2023</div>
+        <div class="cv-details">
+          <h3>Introduction to Global Health</h3>
+          <h4>Ludwig-Maximilians-Universität München[cite: 2]</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- Memberships & Activities -->
+    <section class="content-box">
+      <h2 class="section-title">Memberships & Additional Skills</h2>
+      
+      <div class="academic-level">Undergraduate Affiliations</div>
+      <div class="cv-item">
+        <div class="cv-date">2021 – 2025</div>
+        <div class="cv-details">
+          <h3>Science Research Club of Biomedical Engineering</h3>
+          <h4>Leader[cite: 2]</h4>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">2024</div>
+        <div class="cv-details">
+          <h3>Medical and Biological Engineering Society in Bosnia & Herzegovina</h3>
+          <h4>Member[cite: 2]</h4>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">2024</div>
+        <div class="cv-details">
+          <h3>Center for the Promotion of Science (Science Club Novi Sad)</h3>
+          <h4>Volunteer[cite: 2]</h4>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">2021 – 2024</div>
+        <div class="cv-details">
+          <h3>Engineering Creative Center</h3>
+          <h4>Member[cite: 2]</h4>
+        </div>
+      </div>
+
+      <div class="academic-level">Languages & Extracurricular</div>
+      <div class="cv-item">
+        <div class="cv-date">Languages</div>
+        <div class="cv-details">
+          <ul>
+            <li><strong>English:</strong> High proficiency (IELTS 8.0)[cite: 2].</li>
+            <li><strong>French:</strong> Mediocre proficiency[cite: 2].</li>
+            <li><strong>Italian:</strong> Beginner proficiency[cite: 2].</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-date">Activities</div>
+        <div class="cv-details">
+          <ul>
+            <li>Obtained black belt in TaeKwonDo[cite: 2].</li>
+            <li>Finished music school with a specialisation in piano[cite: 2], maintaining an active interest in classical piano compositions and arranged waltz duets.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
 </body>
 </html>
