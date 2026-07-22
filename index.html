@@ -1,76 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iva Janković | Home</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iva Janković — Home</title>
+  <style>
+    :root {
+      --bg-color: #fffff8;
+      --text-main: #111111;
+      --text-muted: #444444;
+      --link-color: #8b0000;
+      --border-light: #e5e5e5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      background-color: var(--bg-color); color: var(--text-main);
+      line-height: 1.7; padding: 3rem 2rem; max-width: 1200px; margin: 0 auto;
+    }
+    .site-nav {
+      margin-bottom: 4rem; border-bottom: 1px solid var(--border-light); padding-bottom: 1rem;
+      display: flex; gap: 2rem;
+    }
+    .site-nav a {
+      text-decoration: none; font-family: -apple-system, sans-serif;
+      font-size: 0.9rem; font-weight: 600; color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .site-nav a:hover, .site-nav a.active { color: var(--link-color); }
+    
+    .layout-grid { display: grid; grid-template-columns: 2.5fr 1fr; gap: 4rem; }
+    @media (max-width: 900px) { .layout-grid { grid-template-columns: 1fr; } }
+    
+    h1 { font-weight: normal; font-size: 2.4rem; margin-bottom: 1.5rem; }
+    p { margin-bottom: 1.5rem; font-size: 1.1rem; }
+    a { color: var(--link-color); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    
+    .margin-note {
+      background-color: #f5f5f0; padding: 1.2rem; margin-bottom: 2rem;
+      border-left: 3px solid var(--link-color); font-size: 0.9rem;
+      font-family: -apple-system, sans-serif; color: var(--text-muted);
+    }
+    .margin-note h4 { color: var(--text-main); text-transform: uppercase; margin-bottom: 0.5rem; }
+  </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 font-sans antialiased selection:bg-indigo-500 selection:text-white flex flex-col md:flex-row min-h-screen">
+<body>
 
-    <aside class="w-full md:w-64 bg-zinc-950 md:h-screen md:sticky md:top-0 border-b md:border-b-0 md:border-r border-zinc-900 p-8 flex flex-col justify-between shrink-0">
-        <div class="space-y-8">
-            <div class="space-y-1">
-                <h2 class="text-lg font-bold tracking-tight text-zinc-100">Iva Janković</h2>
-                <p class="text-xs text-zinc-500">PhD Student @ Informatics</p>
-            </div>
-            <nav class="flex flex-wrap md:flex-col gap-2 text-sm font-medium">
-                <a href="index.html" class="w-full flex items-center gap-3 text-indigo-400 py-1.5 px-3 bg-zinc-900/50 rounded-lg border border-zinc-800/40">Home</a>
-                <a href="research.html" class="w-full flex items-center gap-3 text-zinc-400 hover:text-zinc-200 py-1.5 px-3 rounded-lg">Research</a>
-                <a href="publications.html" class="w-full flex items-center gap-3 text-zinc-400 hover:text-zinc-200 py-1.5 px-3 rounded-lg">Publications</a>
-                <a href="cv.html" class="w-full flex items-center gap-3 text-zinc-400 hover:text-zinc-200 py-1.5 px-3 rounded-lg">Curriculum Vitae</a>
-            </nav>
-        </div>
-        <div class="hidden md:flex flex-col gap-1.5 text-xs text-zinc-500 pt-6 border-t border-zinc-900">
-            <a href="mailto:i.jankovic-3@sms.ed.ac.uk" class="hover:text-indigo-400 transition-colors">i.jankovic-3@sms.ed.ac.uk</a>
-            <a href="https://github.com/ivajankovic" target="_blank" class="hover:text-indigo-400 transition-colors">GitHub ↗</a>
-        </div>
+  <nav class="site-nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="research.html">Research</a>
+    <a href="cv.html">Curriculum Vitae</a>
+    <a href="publications.html">Publications</a>
+  </nav>
+
+  <main class="layout-grid">
+    <div class="main-column">
+      <h1>Iva Janković</h1>
+      <p>
+        I am a doctoral researcher at the UKRI AI Centre for Doctoral Training in Biomedical Innovation, situated within the School of Informatics at the University of Edinburgh.
+      </p>
+      <p>
+        My core scientific work focuses on the development and application of hard mathematical algorithms, specifically within high-dimensional geometry, convex polytopes, and randomised geometric sampling. I am particularly interested in mapping graph topologies to system stability, and deploying uniform sampling primitives to analyze metabolic networks and topological properties of gene regulatory networks.
+      </p>
+      <p>
+        I am co-supervised by Dr. Filippo Menolascina and Dr. Vissarion Fisikopoulos.
+      </p>
+      <p>
+        Please navigate to the <a href="research.html">Research</a> page for a comprehensive structural overview of my PhD framework regarding synthetic lethal metabolic interventions.
+      </p>
+    </div>
+
+    <aside class="margin-column">
+      <div class="margin-note">
+        <h4>Contact & Links</h4>
+        <p>School of Informatics<br>University of Edinburgh<br>Edinburgh, UK</p>
+        <p style="margin-top: 1rem;">
+          <a href="#">GitHub</a><br>
+          <a href="#">Google Scholar</a><br>
+          <a href="#">LinkedIn</a>
+        </p>
+      </div>
     </aside>
+  </main>
 
-    <main class="flex-1 max-w-3xl px-6 py-12 md:py-24 md:px-16 space-y-20">
-        <header class="space-y-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1 text-xs font-medium text-indigo-400 bg-indigo-500/10 rounded-full ring-1 ring-indigo-500/20">
-                UKRI AI CDT Scholar
-            </div>
-            <h1 class="text-4xl font-bold tracking-tight text-zinc-50">Overview</h1>
-            <p class="text-base text-zinc-400 font-light leading-relaxed">
-                I am a PhD student in the <a href="https://ai4bi-cdt.ed.ac.uk/" target="_blank" class="text-zinc-200 font-medium underline decoration-zinc-800 hover:decoration-indigo-400">UKRI AI CDT in Biomedical Innovation</a> within the School of Informatics at the <strong>University of Edinburgh</strong>. My work focuses on constructing efficient algorithmic architectures to map, evaluate, and structurally control biological systems.
-            </p>
-            <div class="pt-2 space-y-3 text-sm border-l-2 border-zinc-800 pl-4">
-                <div>
-                    <span class="text-xs font-semibold uppercase tracking-wider text-zinc-500 block">Doctoral Thesis Focus</span>
-                    <p class="text-zinc-300 font-normal mt-1 leading-relaxed">
-                        Learning Algorithms for Discovering Synthetic Lethal Metabolic Interventions in Cancer
-                    </p>
-                </div>
-                <div class="text-xs text-zinc-400">
-                    <span class="text-zinc-500">Supervised by</span> 
-                    <a href="https://edwebprofiles.ed.ac.uk/profile/filippo-menolascina" class="text-indigo-400 hover:underline">Dr. Filippo Menolascina</a> & 
-                    <a href="https://scholar.google.com/citations?user=Tro-X7MAAAAJ" class="text-indigo-400 hover:underline">Dr. Vissarion Fisikopoulos</a>
-                </div>
-            </div>
-        </header>
-
-        <section class="space-y-6">
-            <h2 class="text-xs font-semibold tracking-widest text-zinc-400 uppercase">Latest Updates</h2>
-            <div class="space-y-4 text-xs">
-                <div class="flex gap-4 p-3 bg-zinc-900/30 rounded-xl border border-zinc-900">
-                    <span class="text-indigo-400 font-medium shrink-0">Mar 2026</span>
-                    <p class="text-zinc-400">Led the <em>BioAvengers</em> developer squad to a 2nd place finish at the Edinburgh Biohackathon metabolic modeling challenge.</p>
-                </div>
-
-            </div>
-        </section>
-
-        <footer class="pt-8 border-t border-zinc-900">
-            <p class="text-xs text-zinc-600">&copy; 2026 Iva Janković. Powered by GitHub Pages.</p>
-        </footer>
-    </main>
 </body>
 </html>
