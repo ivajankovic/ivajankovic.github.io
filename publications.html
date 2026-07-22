@@ -44,31 +44,6 @@
       border-left: 3px solid var(--edinburgh-red);
       padding-left: 0.75rem;
     }
-    
-    /* Download Archive Folder Box */
-    .download-archive-box {
-      background-color: #f1f5f9;
-      border: 1px dashed #cbd5e1;
-      border-radius: 8px;
-      padding: 1.5rem 2rem;
-      margin-bottom: 2rem;
-      margin-top: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-    }
-
-    .download-archive-text h4 { 
-      color: var(--deep-blue); 
-      margin-bottom: 0.25rem; 
-      font-size: 1.1rem;
-    }
-    
-    .download-archive-text p { 
-      font-size: 0.9rem; 
-      color: var(--text-muted); 
-    }
 
     /* Expandable Publication Cards */
     .publication-item {
@@ -165,14 +140,15 @@
       border-radius: 4px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       transition: transform 0.2s ease;
+      margin-bottom: 1rem;
     }
 
     .pub-screenshot img:hover { transform: scale(1.02); }
 
     .btn-download {
-      margin-top: 1rem;
-      display: inline-block;
-      padding: 0.5rem 1rem;
+      width: 100%;
+      display: block;
+      padding: 0.6rem 1rem;
       background-color: var(--deep-blue);
       color: #fff;
       text-decoration: none;
@@ -181,6 +157,7 @@
       font-weight: 600;
       transition: background 0.2s;
       text-align: center;
+      margin-bottom: 0.5rem;
     }
 
     .btn-download:hover { background-color: var(--edinburgh-red); }
@@ -202,7 +179,6 @@
       .main-content { margin-left: 0; padding: 2rem; }
       .pub-content { grid-template-columns: 1fr; }
       .pub-screenshot img { max-width: 100%; }
-      .download-archive-box { flex-direction: column; text-align: center; gap: 1rem; }
     }
   </style>
 </head>
@@ -229,16 +205,6 @@
 
     <h2 class="section-title">Undergraduate Research</h2>
 
-    <!-- Download Archive Box -->
-    <div class="download-archive-box">
-      <div class="download-archive-text">
-        <h4>Conference Presentations Archive</h4>
-        <p>A complete repository containing all downloadable undergraduate conference slide decks, poster PDFs, and associated materials.</p>
-      </div>
-      <!-- REPLACE 'Undergrad_Presentations.zip' with your actual zip file name -->
-      <a href="Undergrad_Presentations.zip" class="btn-download" download>Download Folder (.zip)</a>
-    </div>
-
     <!-- SUB-CATEGORY: Conference Proceedings -->
     <h3 class="sub-section-title">Conference Proceedings</h3>
 
@@ -254,12 +220,12 @@
         <div class="pub-abstract">
           <h4>Abstract</h4>
           <p>
-            Mathematical modelling of the cardiovascular system is a powerful asset for predicting cardiovascular diseases[cite: 3]. The system is analyzed through compartments as connected subsystems with inputs and outputs[cite: 3]. The study identifies models for four subsystems (left ventricle to left atrium, ascending aorta, descending aorta, and left common carotid artery) by modeling frequency response[cite: 3]. The goal is to discover a linear model with a non-integer order that outperforms high-order autoregressive exogenous input (ARX) integer models[cite: 3]. Model identification occurs non-parametrically to achieve the best smooth fit in the frequency domain using the particle swarm optimization (PSO) algorithm[cite: 3].
+            Mathematical modelling of the cardiovascular system is a powerful asset for predicting cardiovascular diseases. The system is analyzed through compartments as connected subsystems with inputs and outputs. The study identifies models for four subsystems (left ventricle to left atrium, ascending aorta, descending aorta, and left common carotid artery) by modeling frequency response. The goal is to discover a linear model with a non-integer order that outperforms high-order autoregressive exogenous input (ARX) integer models. Model identification occurs non-parametrically to achieve the best smooth fit in the frequency domain using the particle swarm optimization (PSO) algorithm.
           </p>
         </div>
         <div class="pub-screenshot">
-          <img src="paper1_screenshot.jpg" alt="Screenshot of Non-integer Approach to Modelling Compartments paper">
-          <a href="#" class="btn-download">View Full Paper</a>
+          <img src="images/paper1_screenshot.jpg" alt="Screenshot of Non-integer Approach to Modelling Compartments paper">
+          <a href="downloads/MMSC_2024_pages_109-125.pdf" class="btn-download" download>Download Full Paper</a>
         </div>
       </div>
     </details>
@@ -276,12 +242,12 @@
         <div class="pub-abstract">
           <h4>Abstract</h4>
           <p>
-            This study evaluates the ability of a predictive simulation framework to capture changes in stride length and speed on the gait pattern by comparing predicted kinematics with experimental data from a motion analysis laboratory[cite: 4]. An optimal control predictive framework ran simulations on a 2D model across three gait speeds and four stride lengths[cite: 4]. Motion captures for the same conditions were processed to obtain hip, knee, and ankle flexion angles throughout the gait cycle[cite: 4]. The analysis considered range of motion, peak values, and overall patterns[cite: 4].
+            This study evaluates the ability of a predictive simulation framework to capture changes in stride length and speed on the gait pattern by comparing predicted kinematics with experimental data from a motion analysis laboratory. An optimal control predictive framework ran simulations on a 2D model across three gait speeds and four stride lengths. Motion captures for the same conditions were processed to obtain hip, knee, and ankle flexion angles throughout the gait cycle. The analysis considered range of motion, peak values, and overall patterns.
           </p>
         </div>
         <div class="pub-screenshot">
-          <img src="paper2_screenshot.jpg" alt="Screenshot of Predictive Simulations paper">
-          <a href="#" class="btn-download">View Full Paper</a>
+          <img src="images/paper2_screenshot.jpg" alt="Screenshot of Predictive Simulations paper">
+          <a href="downloads/Masing2023-FIN-pages.pdf" class="btn-download" download>Download Full Paper</a>
         </div>
       </div>
     </details>
@@ -298,14 +264,13 @@
         <div class="pub-abstract">
           <h4>Abstract</h4>
           <p>
-            The fractional Kelvin-Zener model of a viscoelastic body was used to model the behavior of monofilament and fluorocarbon during a ramp and hold type of experiment with different deformation velocities[cite: 5]. Experimental measurements were taken on 9 samples of each material, with three groups tested at different deformation rates during the initial phase[cite: 5]. Riemann-Liouville fractional derivatives were numerically approximated using the Grünwald-Letnikov definition[cite: 5]. Four model parameters were determined for each sample, and experimental results were compared with the fractional Kelvin-Zener model predictions[cite: 5].
+            The fractional Kelvin-Zener model of a viscoelastic body was used to model the behavior of monofilament and fluorocarbon during a ramp and hold type of experiment with different deformation velocities. Experimental measurements were taken on 9 samples of each material, with three groups tested at different deformation rates during the initial phase. Riemann-Liouville fractional derivatives were numerically approximated using the Grünwald-Letnikov definition. Four model parameters were determined for each sample, and experimental results were compared with the fractional Kelvin-Zener model predictions.
           </p>
         </div>
         <div class="pub-screenshot">
-          <img src="paper3_screenshot.jpg" alt="Screenshot of Parameter Identification paper">
-          <a href="#" class="btn-download">View Full Paper</a>
-          <!-- Added secondary button for the specific PPT presentation download -->
-          <a href="#" class="btn-download secondary" style="margin-top: 0.5rem;">Download Presentation</a>
+          <img src="images/paper3_screenshot.jpg" alt="Screenshot of Parameter Identification paper">
+          <a href="downloads/SDM2023_IJ-NG-MZ.pdf" class="btn-download" download>Download Full Paper</a>
+          <a href="downloads/PARAMETER IDENTIFICATION OF VISCOELASTIC MATERIALS USING DIFFERENT DEFORMATION VELOCITIES.pdf" class="btn-download secondary" download>Download Slide Deck</a>
         </div>
       </div>
     </details>
@@ -325,15 +290,15 @@
         <div class="pub-abstract">
           <h4>Abstract</h4>
           <ul>
-            <li>Over the past few decades, polymers have gained popularity as a preferred engineering structural material due to their affordability, ease of processing, weight savings, corrosion resistance, and other notable benefits[cite: 7].</li>
-            <li>This paper investigates the influence of deformation rate on the values of parameters of the fractional Kelvin-Zener model[cite: 7].</li>
-            <li>The behavior of two viscoelastic materials was tested, with three sample groups formed for each material, all subjected to the same deformation speed[cite: 7].</li>
-            <li>The change in deformation speed affected the parameter values in a very similar manner for both materials[cite: 7].</li>
+            <li>Over the past few decades, polymers have gained popularity as a preferred engineering structural material due to their affordability, ease of processing, weight savings, corrosion resistance, and other notable benefits.</li>
+            <li>This paper investigates the influence of deformation rate on the values of parameters of the fractional Kelvin-Zener model.</li>
+            <li>The behavior of two viscoelastic materials was tested, with three sample groups formed for each material, all subjected to the same deformation speed.</li>
+            <li>The change in deformation speed affected the parameter values in a very similar manner for both materials.</li>
           </ul>
         </div>
         <div class="pub-screenshot">
-          <img src="poster_como_screenshot.jpg" alt="Screenshot of Summer School Poster">
-          <a href="#" class="btn-download">Download Poster</a>
+          <img src="images/poster_como_screenshot.jpg" alt="Screenshot of Summer School Poster">
+          <a href="downloads/Como_paper_poster.pptx" class="btn-download" download>Download Presentation (.pptx)</a>
         </div>
       </div>
     </details>
