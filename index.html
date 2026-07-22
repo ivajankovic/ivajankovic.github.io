@@ -15,6 +15,7 @@
       --text-main: #1e293b;
       --text-muted: #64748b;
       --sidebar-width: 280px;
+      --right-sidebar-width: 220px; /* New variable for the right logo bar */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,28 +29,30 @@
       line-height: 1.6; 
     }
     
-    /* Left Sidebar Navigation */
+    /* Left Sidebar Navigation (Fixed) */
     .sidebar { 
       width: var(--sidebar-width); 
       background-color: var(--deep-blue); 
       color: #ffffff; 
       position: fixed; 
+      left: 0;
+      top: 0;
       height: 100vh; 
       padding: 3rem 2rem; 
       display: flex; 
       flex-direction: column; 
       box-shadow: 4px 0 15px rgba(0,0,0,0.1); 
       z-index: 10; 
-      align-items: center; /* Center items in sidebar */
+      align-items: center; 
       text-align: center;
     }
 
-    /* Profile Image Styling - Updated to Rectangular */
+    /* Profile Image Styling (Rectangular) */
     .profile-img-container {
       width: 180px;
-      height: 220px; /* Rectangular proportions */
+      height: 220px; 
       margin-bottom: 1.5rem;
-      border-radius: 12px; /* Softly rounded corners for a modern look */
+      border-radius: 12px; 
       overflow: hidden;
       border: 3px solid var(--edinburgh-red);
       background-color: #fff;
@@ -86,13 +89,15 @@
       font-weight: 600; 
     }
     
-    /* Main Content Area */
+    /* Central Scrolling Main Content Area */
     .main-content { 
       margin-left: var(--sidebar-width); 
+      margin-right: var(--right-sidebar-width); /* Prevents text from going under the right sidebar */
       padding: 4rem 5rem; 
       flex: 1; 
-      max-width: 1200px; 
+      max-width: 1000px; /* Limits central width for reading comfort */
     }
+    
     .page-title { 
       font-size: 2.2rem; 
       color: var(--deep-blue); 
@@ -103,7 +108,6 @@
       font-size: 1.1rem;
       color: var(--text-main);
       margin-bottom: 1.5rem;
-      max-width: 800px;
       text-align: justify;
     }
 
@@ -119,7 +123,6 @@
 
     .timeline {
       position: relative;
-      max-width: 800px;
       margin-left: 1rem;
       padding-left: 2rem;
       border-left: 2px solid #cbd5e1;
@@ -130,11 +133,10 @@
       margin-bottom: 2rem;
     }
 
-    /* Timeline Dots */
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: -2.4rem; /* Aligns dot precisely over the border line */
+      left: -2.4rem; 
       top: 0.25rem;
       width: 12px;
       height: 12px;
@@ -171,34 +173,60 @@
       color: var(--text-main);
     }
 
-    /* Institutional Logos Section */
-    .logo-container {
+    /* Right Sidebar for Logos (Fixed) */
+    .right-sidebar {
+      width: var(--right-sidebar-width);
+      position: fixed;
+      right: 0;
+      top: 0;
+      height: 100vh;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center; /* Centers logos vertically */
       align-items: center;
       gap: 3.5rem;
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 2px solid #e2e8f0;
+      padding: 2rem;
+      background-color: transparent;
+      z-index: 5;
     }
 
-    .logo-container img {
-      max-height: 80px; 
-      width: auto;
+    .right-sidebar img {
+      max-width: 100%;
+      max-height: 90px;
       object-fit: contain;
       transition: transform 0.2s ease;
     }
 
-    .logo-container img:hover {
-      transform: scale(1.05); 
+    .right-sidebar img:hover {
+      transform: scale(1.05);
     }
 
-    @media (max-width: 900px) {
+    /* Mobile & Tablet Responsiveness */
+    @media (max-width: 1100px) {
       body { flex-direction: column; }
-      .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; }
-      .main-content { margin-left: 0; padding: 2rem; }
-      .logo-container { gap: 2rem; justify-content: center; }
-      .logo-container img { max-height: 65px; }
+      
+      /* Make both sidebars relative and auto-height so they stack */
+      .sidebar, .right-sidebar { 
+        width: 100%; 
+        height: auto; 
+        position: relative; 
+      }
+      
+      .main-content { 
+        margin-left: 0; 
+        margin-right: 0; 
+        padding: 2rem; 
+      }
+      
+      /* On mobile, lay the logos out horizontally at the bottom */
+      .right-sidebar { 
+        flex-direction: row; 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        padding-top: 1rem;
+        padding-bottom: 3rem;
+        gap: 2.5rem;
+      }
     }
   </style>
 </head>
@@ -206,9 +234,8 @@
 
   <!-- Left Sidebar Navigation -->
   <aside class="sidebar">
-    <!-- Image Profile Container (Rectangular with rounded edges) -->
     <div class="profile-img-container">
-      <img src="downloads/IMG_0903.jpg" alt="Iva Janković Profile Picture">
+      <img src="images/IMG_0903.jpg" alt="Iva Janković Profile Picture">
     </div>
 
     <div class="profile-header">
@@ -224,7 +251,7 @@
     </nav>
   </aside>
 
-  <!-- Right Content Area -->
+  <!-- Central Content Area -->
   <main class="main-content">
     <h1 class="page-title">About Me</h1>
     
@@ -244,8 +271,6 @@
     <h2 class="section-title">Latest Updates</h2>
     
     <div class="timeline">
-      
-      <!-- Update Item 1 -->
       <div class="timeline-item">
         <div class="timeline-date">Summer 2026</div>
         <div class="timeline-content">
@@ -253,7 +278,6 @@
         </div>
       </div>
 
-      <!-- Update Item 2 -->
       <div class="timeline-item">
         <div class="timeline-date">March 2026</div>
         <div class="timeline-content">
@@ -261,24 +285,21 @@
         </div>
       </div>
 
-      <!-- Update Item 3 -->
       <div class="timeline-item">
         <div class="timeline-date">August 2025</div>
         <div class="timeline-content">
           <p>Successfully completed my tenure as a Google Summer of Code contributor with the GeomScale organization, implementing Shake and Bake boundary uniform sampling algorithms.</p>
         </div>
       </div>
-
     </div>
-
-    <!-- Logos Section -->
-    <div class="logo-container">
-      <img src="logos/InformaticsUni_RGB-removebg-preview (2).png" alt="University of Edinburgh, School of Informatics">
-      <img src="logos/AI4BI logo colour (1).png" alt="UKRI AI Centre for Doctoral Training in Biomedical Innovation">
-      <img src="logos/UKRI_Horizontal_RGB (1).png" alt="UK Research and Innovation">
-    </div>
-
   </main>
+
+  <!-- Right Sidebar for Logos -->
+  <aside class="right-sidebar">
+    <img src="logos/InformaticsUni_RGB-removebg-preview (2).png" alt="University of Edinburgh, School of Informatics">
+    <img src="logos/AI4BI logo colour (1).png" alt="UKRI AI Centre for Doctoral Training in Biomedical Innovation">
+    <img src="logos/UKRI_Horizontal_RGB (1).png" alt="UK Research and Innovation">
+  </aside>
 
 </body>
 </html>
