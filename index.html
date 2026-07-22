@@ -8,8 +8,8 @@
     /* Modern Root Variables */
     :root {
       --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      --deep-blue: #0A1C35;       /* Deep Academic Blue */
-      --edinburgh-red: #D50032;   /* University of Edinburgh Red */
+      --deep-blue: #0A1C35;       
+      --edinburgh-red: #D50032;   
       --bg-light: #f8fafc;
       --card-bg: #ffffff;
       --text-main: #1e293b;
@@ -19,112 +19,103 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: var(--font-sans);
-      background-color: var(--bg-light);
-      color: var(--text-main);
-      display: flex;
-      min-height: 100vh;
-      line-height: 1.6;
+    body { 
+      font-family: var(--font-sans); 
+      background-color: var(--bg-light); 
+      color: var(--text-main); 
+      display: flex; 
+      min-height: 100vh; 
+      line-height: 1.6; 
     }
-
+    
     /* Left Sidebar Navigation */
-    .sidebar {
-      width: var(--sidebar-width);
-      background-color: var(--deep-blue);
-      color: #ffffff;
-      position: fixed;
-      height: 100vh;
-      padding: 3rem 2rem;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 4px 0 15px rgba(0,0,0,0.1);
-      z-index: 10;
+    .sidebar { 
+      width: var(--sidebar-width); 
+      background-color: var(--deep-blue); 
+      color: #ffffff; 
+      position: fixed; 
+      height: 100vh; 
+      padding: 3rem 2rem; 
+      display: flex; 
+      flex-direction: column; 
+      box-shadow: 4px 0 15px rgba(0,0,0,0.1); 
+      z-index: 10; 
     }
-
-    .profile-header h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: #ffffff;
+    .profile-header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: #ffffff; }
+    .profile-header p { color: #94a3b8; font-size: 0.9rem; line-height: 1.4; margin-bottom: 2.5rem; }
+    
+    .nav-buttons { display: flex; flex-direction: column; gap: 0.75rem; }
+    .nav-btn { 
+      background: rgba(255, 255, 255, 0.05); 
+      color: #e2e8f0; 
+      text-decoration: none; 
+      padding: 0.85rem 1.25rem; 
+      border-radius: 8px; 
+      font-weight: 500; 
+      font-size: 0.95rem; 
+      transition: all 0.2s ease; 
+      border-left: 4px solid transparent; 
     }
-
-    .profile-header p {
-      color: #94a3b8;
-      font-size: 0.9rem;
-      line-height: 1.4;
-      margin-bottom: 2.5rem;
+    .nav-btn:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+    .nav-btn.active { 
+      background: rgba(255, 255, 255, 0.15); 
+      color: #ffffff; 
+      border-left-color: var(--edinburgh-red); 
+      font-weight: 600; 
     }
-
-    .nav-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .nav-btn {
-      background: rgba(255, 255, 255, 0.05);
-      color: #e2e8f0;
-      text-decoration: none;
-      padding: 0.85rem 1.25rem;
-      border-radius: 8px;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: all 0.2s ease;
-      border-left: 4px solid transparent;
-    }
-
-    .nav-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
-    }
-
-    .nav-btn.active {
-      background: rgba(255, 255, 255, 0.15);
-      color: #ffffff;
-      border-left-color: var(--edinburgh-red);
-      font-weight: 600;
-    }
-
+    
     /* Main Content Area */
-    .main-content {
-      margin-left: var(--sidebar-width);
-      padding: 4rem 5rem;
-      flex: 1;
-      max-width: 1200px;
+    .main-content { 
+      margin-left: var(--sidebar-width); 
+      padding: 4rem 5rem; 
+      flex: 1; 
+      max-width: 1200px; 
     }
-
-    .content-box {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 3rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      border-top: 5px solid var(--edinburgh-red);
+    .page-title { 
+      font-size: 2.2rem; 
+      color: var(--deep-blue); 
+      margin-bottom: 1.5rem; 
     }
-
-    .content-box h2 {
-      font-size: 2.2rem;
-      color: var(--deep-blue);
-      margin-bottom: 1.5rem;
-    }
-
-    .content-box p {
+    
+    .intro-text {
       font-size: 1.1rem;
+      color: var(--text-main);
       margin-bottom: 1.5rem;
-      color: #334155;
+      max-width: 800px;
+      text-align: justify;
     }
 
-    .highlight-text {
-      font-weight: 600;
-      color: var(--edinburgh-red);
+    /* Institutional Logos Section */
+    .logo-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3.5rem;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 2px solid #e2e8f0;
     }
 
-    /* Responsive Design */
+    .logo-container img {
+      max-height: 75px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .logo-container img:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
     @media (max-width: 900px) {
       body { flex-direction: column; }
-      .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+      .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; }
       .main-content { margin-left: 0; padding: 2rem; }
-      .content-box { padding: 2rem; }
+      .logo-container { gap: 2rem; justify-content: center; }
+      .logo-container img { max-height: 60px; }
     }
   </style>
 </head>
@@ -147,18 +138,27 @@
 
   <!-- Right Content Area -->
   <main class="main-content">
-    <div class="content-box">
-      <h2>About Me</h2>
-      <p>
-        I am a PhD student and doctoral researcher at the UKRI AI Centre for Doctoral Training in Biomedical Innovation, based within the School of Informatics at the University of Edinburgh.
-      </p>
-      <p>
-        My core scientific work is grounded in <span class="highlight-text">hard mathematical algorithms</span>, specifically within high-dimensional geometry, convex polytopes, and randomised geometric sampling. I apply these theoretical foundations to analyze structural controllability and the topological properties of gene regulatory networks. 
-      </p>
-      <p>
-        I am currently co-supervised by Dr. Filippo Menolascina and Dr. Vissarion Fisikopoulos.
-      </p>
+    <h1 class="page-title">About Me</h1>
+    
+    <p class="intro-text">
+      I am a PhD student and doctoral researcher at the UKRI AI Centre for Doctoral Training in Biomedical Innovation, based within the School of Informatics at the University of Edinburgh. My doctoral training framework is co-supervised by Dr. Filippo Menolascina and Dr. Vissarion Fisikopoulos.
+    </p>
+    
+    <p class="intro-text">
+      My current research explores the intersection of computational biology, high-dimensional geometry, and control theory. I focus on developing learning algorithms for discovering synthetic lethal metabolic interventions, utilizing randomized geometric sampling algorithms to evaluate biological robustness and analyze the topological properties of gene regulatory networks. 
+    </p>
+
+    <p class="intro-text">
+      Prior to joining the University of Edinburgh, I earned my Bachelor of Science with Honours in Biomedical Engineering from the Faculty of Technical Sciences at the University of Novi Sad. 
+    </p>
+
+    <!-- Logos Section -->
+    <div class="logo-container">
+      <img src="logos/InformaticsUni_RGB-removebg-preview (2).png" alt="University of Edinburgh, School of Informatics">
+      <img src="logos/AI4BI logo colour (1).png" alt="UKRI AI Centre for Doctoral Training in Biomedical Innovation">
+      <img src="logos/UKRI_Horizontal_RGB (1).png" alt="UK Research and Innovation">
     </div>
+
   </main>
 
 </body>
