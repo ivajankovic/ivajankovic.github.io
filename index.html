@@ -40,11 +40,32 @@
       flex-direction: column; 
       box-shadow: 4px 0 15px rgba(0,0,0,0.1); 
       z-index: 10; 
+      align-items: center; /* Center items in sidebar */
+      text-align: center;
     }
-    .profile-header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: #ffffff; }
-    .profile-header p { color: #94a3b8; font-size: 0.9rem; line-height: 1.4; margin-bottom: 2.5rem; }
+
+    /* Profile Image Styling - Updated to Rectangular */
+    .profile-img-container {
+      width: 180px;
+      height: 220px; /* Rectangular proportions */
+      margin-bottom: 1.5rem;
+      border-radius: 12px; /* Softly rounded corners for a modern look */
+      overflow: hidden;
+      border: 3px solid var(--edinburgh-red);
+      background-color: #fff;
+      flex-shrink: 0;
+    }
+
+    .profile-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-header h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.25rem; color: #ffffff; }
+    .profile-header p { color: #94a3b8; font-size: 0.85rem; line-height: 1.4; margin-bottom: 2rem; }
     
-    .nav-buttons { display: flex; flex-direction: column; gap: 0.75rem; }
+    .nav-buttons { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; }
     .nav-btn { 
       background: rgba(255, 255, 255, 0.05); 
       color: #e2e8f0; 
@@ -54,7 +75,8 @@
       font-weight: 500; 
       font-size: 0.95rem; 
       transition: all 0.2s ease; 
-      border-left: 4px solid transparent; 
+      border-left: 4px solid transparent;
+      text-align: left; 
     }
     .nav-btn:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
     .nav-btn.active { 
@@ -85,7 +107,71 @@
       text-align: justify;
     }
 
-    /* Institutional Logos Section - Now Full Color */
+    /* Modern Timeline for Updates */
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--deep-blue);
+      border-bottom: 2px solid var(--card-bg);
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+      margin-top: 4rem;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin-left: 1rem;
+      padding-left: 2rem;
+      border-left: 2px solid #cbd5e1;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    /* Timeline Dots */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.4rem; /* Aligns dot precisely over the border line */
+      top: 0.25rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--edinburgh-red);
+      border: 3px solid var(--bg-light);
+    }
+
+    .timeline-date {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--edinburgh-red);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .timeline-content {
+      background: var(--card-bg);
+      padding: 1.25rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+      border-left: 3px solid var(--deep-blue);
+      transition: transform 0.2s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateX(4px);
+    }
+
+    .timeline-content p {
+      font-size: 0.95rem;
+      margin: 0;
+      color: var(--text-main);
+    }
+
+    /* Institutional Logos Section */
     .logo-container {
       display: flex;
       flex-wrap: wrap;
@@ -97,14 +183,14 @@
     }
 
     .logo-container img {
-      max-height: 80px; /* slightly increased size */
+      max-height: 80px; 
       width: auto;
       object-fit: contain;
       transition: transform 0.2s ease;
     }
 
     .logo-container img:hover {
-      transform: scale(1.05); /* Adds a nice hover interaction */
+      transform: scale(1.05); 
     }
 
     @media (max-width: 900px) {
@@ -120,6 +206,11 @@
 
   <!-- Left Sidebar Navigation -->
   <aside class="sidebar">
+    <!-- Image Profile Container (Rectangular with rounded edges) -->
+    <div class="profile-img-container">
+      <img src="downloads/IMG_0903.jpg" alt="Iva Janković Profile Picture">
+    </div>
+
     <div class="profile-header">
       <h1>Iva Janković</h1>
       <p>Doctoral Researcher<br>University of Edinburgh</p>
@@ -148,6 +239,37 @@
     <p class="intro-text">
       Prior to joining the University of Edinburgh, I earned my Bachelor of Science with Honours in Biomedical Engineering from the Faculty of Technical Sciences at the University of Novi Sad. 
     </p>
+
+    <!-- Latest Updates Section -->
+    <h2 class="section-title">Latest Updates</h2>
+    
+    <div class="timeline">
+      
+      <!-- Update Item 1 -->
+      <div class="timeline-item">
+        <div class="timeline-date">Summer 2026</div>
+        <div class="timeline-content">
+          <p>Structuring the technical development roadmap for an incremental volume-update software framework, moving from brute-force baselines to parallel annealed updates.</p>
+        </div>
+      </div>
+
+      <!-- Update Item 2 -->
+      <div class="timeline-item">
+        <div class="timeline-date">March 2026</div>
+        <div class="timeline-content">
+          <p>Awarded 2nd place at the Edinburgh Biohackathon with team "BioAvengers" for developing a genome-scale metabolic modeling utility.</p>
+        </div>
+      </div>
+
+      <!-- Update Item 3 -->
+      <div class="timeline-item">
+        <div class="timeline-date">August 2025</div>
+        <div class="timeline-content">
+          <p>Successfully completed my tenure as a Google Summer of Code contributor with the GeomScale organization, implementing Shake and Bake boundary uniform sampling algorithms.</p>
+        </div>
+      </div>
+
+    </div>
 
     <!-- Logos Section -->
     <div class="logo-container">
