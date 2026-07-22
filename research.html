@@ -1,68 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iva Janković | Research</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research — PhD Overview</title>
+  <style>
+    /* Global Light Theme Reset */
+    :root {
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --border-color: #e2e8f0;
+      
+      /* Pillar Accent Colors */
+      --accent-comp-geo: #2563eb;    /* Royal Blue */
+      --accent-biocontrol: #7c3aed;  /* Purple */
+      --accent-rl: #059669;          /* Emerald Green */
+      --accent-biomedical: #d97706;  /* Amber/Orange */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Central Overview Banner */
+    .thesis-banner {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .thesis-banner .tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748b;
+      margin-bottom: 0.5rem;
+    }
+
+    .thesis-banner h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      max-width: 800px;
+      margin: 0 auto 1rem auto;
+    }
+
+    .thesis-banner p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    /* 2x2 Pillars Grid Layout */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 540px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Card Component */
+    .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.75rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Color Accents per Pillar */
+    .pillar-card.comp-geo { border-top: 5px solid var(--accent-comp-geo); }
+    .pillar-card.biocontrol { border-top: 5px solid var(--accent-biocontrol); }
+    .pillar-card.rl-game { border-top: 5px solid var(--accent-rl); }
+    .pillar-card.biomedical { border-top: 5px solid var(--accent-biomedical); }
+
+    .pillar-header h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .comp-geo .pillar-header h2 { color: var(--accent-comp-geo); }
+    .biocontrol .pillar-header h2 { color: var(--accent-biocontrol); }
+    .rl-game .pillar-header h2 { color: var(--accent-rl); }
+    .biomedical .pillar-header h2 { color: var(--accent-biomedical); }
+
+    /* Module Blocks within Cards */
+    .module {
+      margin-bottom: 1.25rem;
+    }
+
+    .module:last-child {
+      margin-bottom: 0;
+    }
+
+    .module h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .module ul {
+      list-style-type: disc;
+      padding-left: 1.25rem;
+      color: var(--text-secondary);
+      font-size: 0.925rem;
+    }
+
+    .module ul li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* Footer Collaborator Badges */
+    .collaborators {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border-color);
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .badge {
+      background: #f1f5f9;
+      color: #334155;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+    }
+  </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 font-sans antialiased flex flex-col md:flex-row min-h-screen">
+<body>
 
-    <aside class="w-full md:w-64 bg-zinc-950 md:h-screen md:sticky md:top-0 border-b md:border-b-0 md:border-r border-zinc-900 p-8 flex flex-col justify-between shrink-0">
-        <div class="space-y-8">
-            <div class="space-y-1">
-                <h2 class="text-lg font-bold tracking-tight text-zinc-100">Iva Janković</h2>
-                <p class="text-xs text-zinc-500">PhD Student @ Informatics</p>
-            </div>
-            <nav class="flex flex-wrap md:flex-col gap-2 text-sm font-medium">
-                <a href="index.html" class="w-full flex items-center gap-3 text-zinc-400 hover:text-zinc-200 py-1.5 px-3 rounded-lg">Home</a>
-                <a href="research.html" class="w-full flex items-center gap-3 text-indigo-400 py-1.5 px-3 bg-zinc-900/50 rounded-lg border border-zinc-800/40">Research</a>
-                <a href="publications.html" class="w-full flex items-center gap-3 text-zinc-400 hover:text-zinc-200 py-1.5 px-3 rounded-lg">Publications</a>
-                <a href="cv.html" class="w-full flex items-center gap-3 text-zinc-400 hover:text-zinc-200 py-1.5 px-3 rounded-lg">Curriculum Vitae</a>
-            </nav>
+  <div class="container">
+
+    <!-- Central PhD Topic Banner -->
+    <header class="thesis-banner">
+      <span class="tag">PhD Doctoral Research Framework</span>
+      <h1>Learning Algorithms for Discovering Synthetic Lethal Metabolic Interventions</h1>
+      <p>
+        An interdisciplinary approach combining computational geometry, control-theoretic viability filtering, game theory, and biological model validation to identify multi-target metabolic vulnerabilities in disease.
+      </p>
+    </header>
+
+    <!-- Four Research Pillars -->
+    <main class="pillars-grid">
+
+      <!-- Pillar 1: Computational Geometry -->
+      <article class="pillar-card comp-geo">
+        <div class="pillar-header">
+          <h2>1. Computational Geometry</h2>
+          
+          <div class="module">
+            <h3>Boundary Sampling of Convex Polytopes</h3>
+            <ul>
+              <li>Billiard Walk & Shake-and-Bake Walk algorithms</li>
+              <li>Sampling boundary facets of feasible metabolic regions</li>
+              <li>Detecting active constraints and collapse directions</li>
+              <li>Supporting geometry-based vulnerability discovery</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <h3>Geometric Measures of Biological Robustness</h3>
+            <ul>
+              <li>Volume, anisotropy, and directional widths</li>
+              <li>Boundary activity and active constraints</li>
+              <li>Evaluating metabolic flexibility vs. fragility</li>
+              <li>Moving beyond FBA/FVA pointwise analysis</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <h3>Dynamic Volume Updating via Random Walks</h3>
+            <ul>
+              <li>Sequential constraint additions ($P_0 \supset P_1 \supset \dots \supset P_t$)</li>
+              <li>Sample reuse and annealed cuts</li>
+              <li>Scalable reward proxy for reinforcement learning</li>
+            </ul>
+          </div>
         </div>
-    </aside>
 
-    <main class="flex-1 max-w-3xl px-6 py-12 md:py-24 md:px-16 space-y-16">
-        <header class="space-y-2">
-            <h1 class="text-3xl font-bold tracking-tight text-zinc-50">Research & Software</h1>
-            <p class="text-xs text-zinc-500 font-light">Methodologies and algorithmic architectures</p>
-        </header>
+        <div class="collaborators">
+          <span class="badge">GeomScale</span>
+          <span class="badge">NTUA</span>
+          <span class="badge">Google Summer of Code</span>
+        </div>
+      </article>
 
-        <section class="space-y-6">
-            <h2 class="text-xs font-semibold tracking-widest text-zinc-400 uppercase">Core Methodologies</h2>
-            <div class="space-y-4">
-                <div class="p-6 bg-zinc-900/30 rounded-2xl border border-zinc-900 space-y-2">
-                    <h3 class="text-sm font-medium text-zinc-200">Systems Biology & Structural Control</h3>
-                    <p class="text-xs text-zinc-400 font-light leading-relaxed">
-                        Analyzing biological pathway interactions using monotone dynamical system behaviors and structural controllability bounds. We map multi-tier interaction dynamics within complex Genome-Scale Metabolic Models (GSMMs) and Gene Regulatory Networks (GRNs) to predict regulatory outcomes.
-                    </p>
-                </div>
-                <div class="p-6 bg-zinc-900/30 rounded-2xl border border-zinc-900 space-y-2">
-                    <h3 class="text-sm font-medium text-zinc-200">High-Dimensional Geometry & Sampling</h3>
-                    <p class="text-xs text-zinc-400 font-light leading-relaxed">
-                        Developing scalable randomized algorithms designed for boundary and interior sampling configurations across complex, constrained convex polytopes. This supports efficient geometric calculations within metabolic flux cones.
-                    </p>
-                </div>
-            </div>
-        </section>
+      <!-- Pillar 2: Biocontrol & Dynamical Systems -->
+      <article class="pillar-card biocontrol">
+        <div class="pillar-header">
+          <h2>2. Biocontrol & Dynamical Systems</h2>
+          
+          <div class="module">
+            <h3>Dynamical Viability Filtering for GRNs</h3>
+            <ul>
+              <li>Signed Gene Regulatory Network (GRN) topology: activation / repression</li>
+              <li>Gauge-cooperativity as a graph-computable certificate</li>
+              <li>Compact attractors under biological boundedness</li>
+              <li>Polyhedral trapping blocks for attractor localization</li>
+              <li>Robustness margins under kinetic uncertainty</li>
+            </ul>
+          </div>
 
-        <section class="space-y-6">
-            <h2 class="text-xs font-semibold tracking-widest text-zinc-400 uppercase">Software Contributions</h2>
-            <div class="grid grid-cols-1 gap-4">
-                <div class="p-5 bg-zinc-900/20 rounded-xl border border-zinc-900 flex justify-between items-start">
-                    <div class="space-y-1">
-                        <span class="text-[10px] font-semibold text-indigo-400 tracking-wider uppercase bg-indigo-500/10 px-2 py-0.5 rounded">C++ / Python</span>
-                        <h4 class="text-sm font-medium text-zinc-200 pt-1">Volesti & Dingo Libraries</h4>
-                        <p class="text-xs text-zinc-400 font-light">Implementing algorithmic paradigms, including variants of the Markov Chain Monte Carlo boundary sampling mechanics.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+          <div class="module">
+            <h3>Topology Refinement</h3>
+            <ul>
+              <li>Framing failed GRNs as topology-editing problems</li>
+              <li>Minimal edge deletion or sign-flip optimization</li>
+              <li>Distance-to-viability score to preserve high-confidence biological edges</li>
+              <li>ML/RL searches for robust topology repairs</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <h3>Proof-of-Concept Validation</h3>
+            <ul>
+              <li>Testing on canonical GRN motifs (mutual repression toggle, repressilator)</li>
+              <li>Incoherent feed-forward loops as failed cases</li>
+              <li>Simulating perturbations and comparing system robustness</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="collaborators">
+          <span class="badge">KTH</span>
+          <span class="badge">Digital Futures</span>
+        </div>
+      </article>
+
+      <!-- Pillar 3: AI, Game Theory & Reinforcement Learning -->
+      <article class="pillar-card rl-game">
+        <div class="pillar-header">
+          <h2>3. Game Theory & Reinforcement Learning</h2>
+          
+          <div class="module">
+            <h3>Game-Theoretic Intervention Design</h3>
+            <ul>
+              <li>Interventions modeled as players and actions</li>
+              <li>Tumour vs. healthy feasible metabolic spaces</li>
+              <li>Utility formulation: $\text{Utility} = \text{Tumour Collapse} - \text{Healthy Damage} - \text{Cost}$</li>
+              <li>Potential games for stable multi-target strategies</li>
+              <li>Static baselines for intervention selection</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <h3>RL for Sequential Intervention Discovery</h3>
+            <ul>
+              <li><strong>State:</strong> Current constrained polytope</li>
+              <li><strong>Action:</strong> Gene / reaction constraint addition</li>
+              <li><strong>Reward:</strong> Selective robustness loss</li>
+              <li>Policy learning for ordered intervention combinations</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Pillar 4: Biomedical Impact & Experimental Validation -->
+      <article class="pillar-card biomedical">
+        <div class="pillar-header">
+          <h2>4. Biomedical Impact & Validation</h2>
+          
+          <div class="module">
+            <h3>Cancer-Specific Models</h3>
+            <ul>
+              <li>Reconstructing tumour and healthy-cell Genome-Scale Metabolic Models (GEMs)</li>
+              <li>Comparing existing reconstruction methods</li>
+              <li>Testing whether improved model fidelity enhances geometry-based discovery</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <h3>Experimental & Empirical Validation</h3>
+            <ul>
+              <li>Prioritizing selective synthetic lethal candidates</li>
+              <li>Validating predictions against DepMap and gene essentiality datasets</li>
+              <li>Experimental mission in collaboration with experimental research groups</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="collaborators">
+          <span class="badge">Human Technopole</span>
+          <span class="badge">DepMap Portal</span>
+        </div>
+      </article>
+
     </main>
+  </div>
+
 </body>
 </html>
