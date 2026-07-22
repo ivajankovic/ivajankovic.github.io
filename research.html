@@ -77,7 +77,11 @@
     .module ul li { position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-muted); }
     .module ul li::before { content: "•"; color: var(--edinburgh-red); font-weight: bold; position: absolute; left: 0; top: 0; }
 
-    /* Video Embed Container */
+    /* Video Embed Container restricted in width */
+    .video-wrapper {
+      max-width: 600px;
+      margin-top: 1rem;
+    }
     .video-container {
       position: relative;
       padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
@@ -85,7 +89,6 @@
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-top: 1rem;
     }
     .video-container iframe {
       position: absolute;
@@ -97,6 +100,14 @@
     }
 
     /* Buttons */
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      margin-top: 1.5rem;
+    }
+
     .btn-download {
       display: inline-block;
       padding: 0.75rem 1.5rem;
@@ -107,9 +118,20 @@
       font-size: 0.95rem;
       font-weight: 600;
       transition: background 0.2s;
-      margin-bottom: 2rem;
     }
+    
     .btn-download:hover { background-color: var(--edinburgh-red); }
+    
+    .btn-download.secondary {
+      background-color: transparent;
+      border: 1px solid var(--deep-blue);
+      color: var(--deep-blue);
+    }
+    
+    .btn-download.secondary:hover {
+      background-color: var(--deep-blue);
+      color: #fff;
+    }
 
     @media (max-width: 900px) {
       body { flex-direction: column; }
@@ -233,16 +255,24 @@
         <h3>Pathophysiological Cardiovascular Dynamics: Real and Complex Fractional Order Models</h3>
         
         <div class="module">
-          <p style="margin-bottom: 1.5rem; color: var(--text-main); text-align: justify;">
-            This research utilizes fractional derivatives to construct highly accurate, low-parameter mathematical models of the cardiovascular circulatory system. By analyzing blood pressure data in the frequency domain through Bode plots, this approach identifies critical frequencies and fine-tunes system dynamics far more precisely than rigid integer-order derivative models. The outcome is a clear mathematical framework that replaces a cumbersome 20-parameter model with a smart, 5-parameter fractional equivalent.
+          <h4 style="color: var(--deep-blue); font-size: 1.15rem; margin-bottom: 0.5rem;">Project Summary</h4>
+          <p style="margin-bottom: 1rem; color: var(--text-main); text-align: justify;">
+            This project focuses on developing highly accurate and interpretable mathematical models of the cardiovascular circulatory system to aid in the prediction of cardiovascular diseases. By analyzing clinical blood pressure data in the frequency domain, the study evaluates the cardiovascular system as four interconnected compartments (left ventricle to left atrium, ascending aorta, descending aorta, and left common carotid artery). 
+          </p>
+          <p style="margin-bottom: 1rem; color: var(--text-main); text-align: justify;">
+            Using Bode plots to identify critical frequencies, the research demonstrates that a streamlined 5-parameter fractional-order model can capture heart dynamics with the same accuracy as a highly complex 20-parameter integer-order (ARX) model. This fractional approach provides a flexible, clear mathematical framework that acts like a "smart equalizer," precisely tuning into how the heart amplifies or suppresses different frequencies during the cardiac cycle.
           </p>
           
-          <!-- Ensure you place your thesis file in your downloads folder -->
-          <a href="downloads/Diplomski_FTN(1).pdf" class="btn-download" download>Download Bachelor Thesis (Serbian - Cyrillic) (.pdf)</a>
+          <div class="button-group">
+            <a href="downloads/Bachelor_Thesis_Iva_Jankovic.pdf" class="btn-download" download>Download Bachelor Thesis (.pdf)</a>
+            <a href="downloads/MMSC_2024_pages_109-125.pdf" class="btn-download secondary" download>Download Conference Proceedings (.pdf)</a>
+          </div>
           
           <h4 style="color: var(--deep-blue); font-size: 1.15rem;">3 Minute Thesis Presentation (2nd Place Award - BH Futures Foundation)</h4>
-          <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/G6x2JG2lNRw" title="Iva Jankovic - Fractional modelling of cardiovascular circulatory system" allowfullscreen></iframe>
+          <div class="video-wrapper">
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/G6x2JG2lNRw" title="Iva Jankovic - Fractional modelling of cardiovascular circulatory system" allowfullscreen></iframe>
+            </div>
           </div>
         </div>
       </article>
