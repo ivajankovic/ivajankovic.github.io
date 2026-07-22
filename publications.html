@@ -3,85 +3,307 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iva Janković — Home</title>
+  <title>Iva Janković — Publications</title>
   <style>
+    /* Modern Root Variables */
     :root {
-      --bg-color: #fffff8;
-      --text-main: #111111;
-      --text-muted: #444444;
-      --link-color: #8b0000;
-      --border-light: #e5e5e5;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --deep-blue: #0A1C35;       
+      --edinburgh-red: #D50032;   
+      --bg-light: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --sidebar-width: 280px;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-      background-color: var(--bg-color); color: var(--text-main);
-      line-height: 1.7; padding: 3rem 2rem; max-width: 1200px; margin: 0 auto;
-    }
-    .site-nav {
-      margin-bottom: 4rem; border-bottom: 1px solid var(--border-light); padding-bottom: 1rem;
-      display: flex; gap: 2rem;
-    }
-    .site-nav a {
-      text-decoration: none; font-family: -apple-system, sans-serif;
-      font-size: 0.9rem; font-weight: 600; color: var(--text-muted);
-      transition: color 0.2s;
-    }
-    .site-nav a:hover, .site-nav a.active { color: var(--link-color); }
+
+    body { font-family: var(--font-sans); background-color: var(--bg-light); color: var(--text-main); display: flex; min-height: 100vh; line-height: 1.6; }
     
-    .layout-grid { display: grid; grid-template-columns: 2.5fr 1fr; gap: 4rem; }
-    @media (max-width: 900px) { .layout-grid { grid-template-columns: 1fr; } }
+    /* Left Sidebar Navigation */
+    .sidebar { width: var(--sidebar-width); background-color: var(--deep-blue); color: #ffffff; position: fixed; height: 100vh; padding: 3rem 2rem; display: flex; flex-direction: column; box-shadow: 4px 0 15px rgba(0,0,0,0.1); z-index: 10; }
+    .profile-header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: #ffffff; }
+    .profile-header p { color: #94a3b8; font-size: 0.9rem; line-height: 1.4; margin-bottom: 2.5rem; }
+    .nav-buttons { display: flex; flex-direction: column; gap: 0.75rem; }
+    .nav-btn { background: rgba(255, 255, 255, 0.05); color: #e2e8f0; text-decoration: none; padding: 0.85rem 1.25rem; border-radius: 8px; font-weight: 500; font-size: 0.95rem; transition: all 0.2s ease; border-left: 4px solid transparent; }
+    .nav-btn:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+    .nav-btn.active { background: rgba(255, 255, 255, 0.15); color: #ffffff; border-left-color: var(--edinburgh-red); font-weight: 600; }
     
-    h1 { font-weight: normal; font-size: 2.4rem; margin-bottom: 1.5rem; }
-    p { margin-bottom: 1.5rem; font-size: 1.1rem; }
-    a { color: var(--link-color); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    /* Main Content Area */
+    .main-content { margin-left: var(--sidebar-width); padding: 4rem 5rem; flex: 1; max-width: 1200px; }
+    .page-title { font-size: 2.2rem; color: var(--deep-blue); margin-bottom: 3rem; }
     
-    .margin-note {
-      background-color: #f5f5f0; padding: 1.2rem; margin-bottom: 2rem;
-      border-left: 3px solid var(--link-color); font-size: 0.9rem;
-      font-family: -apple-system, sans-serif; color: var(--text-muted);
+    .section-title { font-size: 1.6rem; color: var(--deep-blue); border-bottom: 2px solid var(--card-bg); padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    
+    .sub-section-title {
+      font-size: 1.25rem;
+      color: var(--text-main);
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid var(--edinburgh-red);
+      padding-left: 0.75rem;
     }
-    .margin-note h4 { color: var(--text-main); text-transform: uppercase; margin-bottom: 0.5rem; }
+
+    /* Expandable Publication Cards */
+    .publication-item {
+      background: var(--card-bg);
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      border-left: 4px solid var(--deep-blue);
+      overflow: hidden;
+    }
+
+    /* Summary is the clickable header */
+    .publication-item summary {
+      padding: 1.5rem 2rem;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    
+    .publication-item summary::-webkit-details-marker { display: none; } 
+
+    .publication-item summary:hover {
+      background-color: #f1f5f9;
+    }
+
+    .pub-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--deep-blue);
+      margin-bottom: 0.25rem;
+      padding-right: 2rem;
+    }
+
+    .pub-authors { font-size: 0.95rem; font-weight: 500; color: var(--text-main); margin-bottom: 0.25rem; }
+    .pub-venue { font-size: 0.9rem; font-style: italic; color: var(--text-muted); }
+
+    /* The plus/minus icon indicator */
+    .publication-item summary::after {
+      content: '+';
+      position: absolute;
+      right: 2rem;
+      top: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--edinburgh-red);
+    }
+    .publication-item[open] summary::after { content: '−'; }
+
+    /* Expanded Content Area */
+    .pub-content {
+      padding: 0 2rem 2rem 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2.5rem; /* Slightly larger gap */
+      border-top: 1px solid var(--bg-light);
+      margin-top: 1rem;
+      padding-top: 1.5rem;
+    }
+
+    .pub-abstract h4 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--edinburgh-red);
+      margin-bottom: 0.5rem;
+    }
+
+    .pub-abstract p { font-size: 0.95rem; color: var(--text-muted); text-align: justify; }
+
+    .pub-abstract ul {
+      margin-top: 0.5rem;
+      padding-left: 1.25rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+    
+    .pub-abstract ul li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* Screenshot Styling - Updated for larger sizing */
+    .pub-screenshot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .pub-screenshot img {
+      width: 100%;
+      max-width: 450px; /* Increased from 250px so it naturally fills the space */
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+      margin-bottom: 1.5rem;
+    }
+
+    .pub-screenshot img:hover { transform: scale(1.02); }
+
+    .btn-download {
+      width: 100%;
+      display: block;
+      padding: 0.6rem 1rem;
+      background-color: var(--deep-blue);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .btn-download:hover { background-color: var(--edinburgh-red); }
+    
+    .btn-download.secondary {
+      background-color: transparent;
+      border: 1px solid var(--deep-blue);
+      color: var(--deep-blue);
+    }
+    
+    .btn-download.secondary:hover {
+      background-color: var(--deep-blue);
+      color: #fff;
+    }
+
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; }
+      .main-content { margin-left: 0; padding: 2rem; }
+      .pub-content { grid-template-columns: 1fr; }
+      .pub-screenshot img { max-width: 100%; }
+    }
   </style>
 </head>
 <body>
 
-  <nav class="site-nav">
-    <a href="index.html" class="active">Home</a>
-    <a href="research.html">Research</a>
-    <a href="cv.html">Curriculum Vitae</a>
-    <a href="publications.html">Publications</a>
-  </nav>
-
-  <main class="layout-grid">
-    <div class="main-column">
+  <!-- Left Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="profile-header">
       <h1>Iva Janković</h1>
-      <p>
-        I am a doctoral researcher at the UKRI AI Centre for Doctoral Training in Biomedical Innovation, situated within the School of Informatics at the University of Edinburgh.
-      </p>
-      <p>
-        My core scientific work focuses on the development and application of hard mathematical algorithms, specifically within high-dimensional geometry, convex polytopes, and randomised geometric sampling. I am particularly interested in mapping graph topologies to system stability, and deploying uniform sampling primitives to analyze metabolic networks and topological properties of gene regulatory networks.
-      </p>
-      <p>
-        I am co-supervised by Dr. Filippo Menolascina and Dr. Vissarion Fisikopoulos.
-      </p>
-      <p>
-        Please navigate to the <a href="research.html">Research</a> page for a comprehensive structural overview of my PhD framework regarding synthetic lethal metabolic interventions.
-      </p>
+      <p>Doctoral Researcher<br>University of Edinburgh</p>
     </div>
+    
+    <nav class="nav-buttons">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="research.html" class="nav-btn">Research</a>
+      <a href="cv.html" class="nav-btn">Curriculum Vitae</a>
+      <a href="publications.html" class="nav-btn active">Publications</a>
+    </nav>
+  </aside>
 
-    <aside class="margin-column">
-      <div class="margin-note">
-        <h4>Contact & Links</h4>
-        <p>School of Informatics<br>University of Edinburgh<br>Edinburgh, UK</p>
-        <p style="margin-top: 1rem;">
-          <a href="#">GitHub</a><br>
-          <a href="#">Google Scholar</a><br>
-          <a href="#">LinkedIn</a>
-        </p>
+  <!-- Right Content Area -->
+  <main class="main-content">
+    <h1 class="page-title">Publications & Outputs</h1>
+
+    <h2 class="section-title">Undergraduate Research</h2>
+
+    <!-- SUB-CATEGORY: Conference Proceedings -->
+    <h3 class="sub-section-title">Conference Proceedings</h3>
+
+    <!-- Publication 1 -->
+    <details class="publication-item">
+      <summary>
+        <span class="pub-title">Non-integer Approach to Modelling Compartments of Cardiovascular Circulatory System</span>
+        <span class="pub-authors">Iva Janković and Mirna Kapetina Radović</span>
+        <span class="pub-venue">Proceedings of 3rd International Workshop on Mathematical Modeling and Scientific Computing, EPIC Series in Computing, Volume 104, 2024.</span>
+      </summary>
+      
+      <div class="pub-content">
+        <div class="pub-abstract">
+          <h4>Abstract</h4>
+          <p>
+            Mathematical modelling of the cardiovascular system is a powerful asset for predicting cardiovascular diseases. The system is analyzed through compartments as connected subsystems with inputs and outputs. The study identifies models for four subsystems (left ventricle to left atrium, ascending aorta, descending aorta, and left common carotid artery) by modeling frequency response. The goal is to discover a linear model with a non-integer order that outperforms high-order autoregressive exogenous input (ARX) integer models. Model identification occurs non-parametrically to achieve the best smooth fit in the frequency domain using the particle swarm optimization (PSO) algorithm.
+          </p>
+        </div>
+        <div class="pub-screenshot">
+          <img src="images/paper1_screenshot.jpg" alt="Screenshot of Non-integer Approach to Modelling Compartments paper">
+          <a href="downloads/MMSC_2024_pages_109-125.pdf" class="btn-download" download>Download Full Paper</a>
+        </div>
       </div>
-    </aside>
+    </details>
+
+    <!-- Publication 2 -->
+    <details class="publication-item">
+      <summary>
+        <span class="pub-title">Predictive Simulations Capture the Effect of Changing Stride Length and Speed on Lower Body Kinematics</span>
+        <span class="pub-authors">Iva Janković, Filippo Maceratesi, Míriam Febrer-Nafría</span>
+        <span class="pub-venue">The 6th International Conference Mechanical Engineering in XXI Century, December 14-15, 2023, Niš, Serbia.</span>
+      </summary>
+      
+      <div class="pub-content">
+        <div class="pub-abstract">
+          <h4>Abstract</h4>
+          <p>
+            This study evaluates the ability of a predictive simulation framework to capture changes in stride length and speed on the gait pattern by comparing predicted kinematics with experimental data from a motion analysis laboratory. An optimal control predictive framework ran simulations on a 2D model across three gait speeds and four stride lengths. Motion captures for the same conditions were processed to obtain hip, knee, and ankle flexion angles throughout the gait cycle. The analysis considered range of motion, peak values, and overall patterns.
+          </p>
+        </div>
+        <div class="pub-screenshot">
+          <img src="images/paper2_screenshot.jpg" alt="Screenshot of Predictive Simulations paper">
+          <a href="downloads/Masing2023-FIN-pages.pdf" class="btn-download" download>Download Full Paper</a>
+        </div>
+      </div>
+    </details>
+
+    <!-- Publication 3 -->
+    <details class="publication-item">
+      <summary>
+        <span class="pub-title">Parameter Identification of Viscoelastic Materials Using Different Deformation Velocities</span>
+        <span class="pub-authors">Iva R. Janković, Nenad M. Grahovac, Miodrag M. Žigić</span>
+        <span class="pub-venue">9th International Congress of the Serbian Society of Mechanics, July 5-7, 2023, Vrnjačka Banja, Serbia.</span>
+      </summary>
+      
+      <div class="pub-content">
+        <div class="pub-abstract">
+          <h4>Abstract</h4>
+          <p>
+            The fractional Kelvin-Zener model of a viscoelastic body was used to model the behavior of monofilament and fluorocarbon during a ramp and hold type of experiment with different deformation velocities. Experimental measurements were taken on 9 samples of each material, with three groups tested at different deformation rates during the initial phase. Riemann-Liouville fractional derivatives were numerically approximated using the Grünwald-Letnikov definition. Four model parameters were determined for each sample, and experimental results were compared with the fractional Kelvin-Zener model predictions.
+          </p>
+        </div>
+        <div class="pub-screenshot">
+          <img src="images/paper3_screenshot.jpg" alt="Screenshot of Parameter Identification paper">
+          <a href="downloads/SDM2023_IJ-NG-MZ.pdf" class="btn-download" download>Download Full Paper</a>
+          <a href="downloads/PARAMETER IDENTIFICATION OF VISCOELASTIC MATERIALS USING DIFFERENT DEFORMATION VELOCITIES.pdf" class="btn-download secondary" download>Download Slide Deck</a>
+        </div>
+      </div>
+    </details>
+
+    <!-- SUB-CATEGORY: Poster Presentations -->
+    <h3 class="sub-section-title">Poster Presentations</h3>
+    
+    <!-- Poster 1 -->
+    <details class="publication-item">
+      <summary>
+        <span class="pub-title">Parameter Identification of Viscoelastic Materials Using Different Deformation Velocities</span>
+        <span class="pub-authors">Iva R. Janković, Nenad M. Grahovac, Miodrag M. Žigić</span>
+        <span class="pub-venue">Summer School “Mechanics of active soft materials: experiments, theory, numerics, and applications”</span>
+      </summary>
+      
+      <div class="pub-content">
+        <div class="pub-abstract">
+          <h4>Abstract</h4>
+          <ul>
+            <li>Over the past few decades, polymers have gained popularity as a preferred engineering structural material due to their affordability, ease of processing, weight savings, corrosion resistance, and other notable benefits.</li>
+            <li>This paper investigates the influence of deformation rate on the values of parameters of the fractional Kelvin-Zener model.</li>
+            <li>The behavior of two viscoelastic materials was tested, with three sample groups formed for each material, all subjected to the same deformation speed.</li>
+            <li>The change in deformation speed affected the parameter values in a very similar manner for both materials.</li>
+          </ul>
+        </div>
+        <div class="pub-screenshot">
+          <img src="images/poster_como_screenshot.jpg" alt="Screenshot of Summer School Poster">
+          <a href="downloads/Como_paper_poster.pptx" class="btn-download" download>Download Presentation (.pptx)</a>
+        </div>
+      </div>
+    </details>
+
   </main>
 
 </body>
