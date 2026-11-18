@@ -32,7 +32,76 @@
     
     /* Main Content Area */
     .main-content { margin-left: var(--sidebar-width); padding: 4rem 5rem; flex: 1; max-width: 1200px; }
-    .page-title { font-size: 2.2rem; color: var(--deep-blue); margin-bottom: 3rem; }
+    .page-title { font-size: 2.2rem; color: var(--deep-blue); margin-bottom: 1.5rem; }
+
+    /* Search & Tag Filter Bar */
+    .search-container {
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.85rem 1.25rem;
+      font-size: 0.95rem;
+      font-family: var(--font-sans);
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background-color: var(--card-bg);
+      color: var(--text-main);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--deep-blue);
+    }
+
+    .filter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .filter-btn {
+      background: #e2e8f0;
+      color: var(--deep-blue);
+      border: none;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--edinburgh-red);
+      color: #ffffff;
+    }
+
+    /* Topic Tags inside Publication Cards */
+    .pub-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .pub-tag {
+      background-color: #f1f5f9;
+      color: var(--deep-blue);
+      border: 1px solid #cbd5e1;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+    }
     
     .section-title { font-size: 1.6rem; color: var(--deep-blue); border-bottom: 2px solid var(--card-bg); padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
     
@@ -99,7 +168,7 @@
       padding: 0 2rem 2rem 2rem;
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 2.5rem; /* Slightly larger gap */
+      gap: 2.5rem;
       border-top: 1px solid var(--bg-light);
       margin-top: 1rem;
       padding-top: 1.5rem;
@@ -126,7 +195,7 @@
       margin-bottom: 0.25rem;
     }
 
-    /* Screenshot Styling - Updated for larger sizing */
+    /* Screenshot Styling */
     .pub-screenshot {
       display: flex;
       flex-direction: column;
@@ -136,7 +205,7 @@
     
     .pub-screenshot img {
       width: 100%;
-      max-width: 450px; /* Increased from 250px so it naturally fills the space */
+      max-width: 450px;
       border: 1px solid #cbd5e1;
       border-radius: 4px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -204,7 +273,49 @@
   <main class="main-content">
     <h1 class="page-title">Publications & Outputs</h1>
 
-    <h2 class="section-title">Undergraduate Research</h2>
+    <!-- Search & Quick Tag Filter -->
+    <div class="search-container">
+      <input type="text" id="pubSearch" class="search-input" placeholder="Search publications by title, author, keyword, or tag..." onkeyup="filterPublications()">
+      <div class="filter-tags">
+        <span>Quick filter:</span>
+        <button type="button" class="filter-btn active" onclick="setTagFilter('all', this)">All</button>
+        <button type="button" class="filter-btn" onclick="setTagFilter('molecular networks and dynamical systems', this)">Molecular Networks and Dynamical Systems</button>
+      </div>
+    </div>
+
+    <!-- PhD Research Section -->
+    <h2 class="section-title">PhD Research</h2>
+
+    <!-- SUB-CATEGORY: Preprints -->
+    <h3 class="sub-section-title">Preprints</h3>
+
+    <!-- PhD Preprint 1 -->
+    <details class="publication-item" data-tags="molecular networks and dynamical systems" open>
+      <summary>
+        <span class="pub-title">Feedback and Resource Competition in Incoherent Feedforward Loops: When Is Cumulative Dose Ordering Preserved?</span>
+        <span class="pub-authors">Iva Janković, Fabiana Calandra, Giansimone Perrino, Velia Siciliano and Filippo Menolascina</span>
+        <span class="pub-venue">arXiv Preprint (arXiv:2611.22710v1), 2026.</span>
+        <div class="pub-tags">
+          <span class="pub-tag">Molecular Networks and Dynamical Systems</span>
+        </div>
+      </summary>
+      
+      <div class="pub-content">
+        <div class="pub-abstract">
+          <h4>Abstract</h4>
+          <p>
+            Biochemical coupling can change the expression levels and timing predicted by an incoherent feedforward loop (IFFL) model without changing cumulative dose ordering. We derive ordering conditions using shared-production identities and Metzler comparison bounds, with tail guarantees beyond finite computation. A nonlinear example exhibits delayed slope reversal at a fixed dose, on an O(1/η) timescale as pathway mismatch η vanishes. At one fixed joint fit, validated bounds establish decreasing cumulative output across 20-100 ng nominal burden, from zero to full target loading, at every positive finite observation time for a translation-blocking model and an RNA-decay model. Full loading at 20 ng reduces 48-hour cumulative output by 13.35% and 10.18%, respectively, while endpoint concentration in the first model changes by only +0.15%. Preserved ordering therefore does not ensure quantitative agreement.
+          </p>
+        </div>
+        <div class="pub-screenshot">
+          <a href="https://arxiv.org/html/2611.22710v1" target="_blank" rel="noopener noreferrer" class="btn-download">Read HTML Preprint (arXiv)</a>
+          <a href="https://arxiv.org/pdf/2611.22710" target="_blank" rel="noopener noreferrer" class="btn-download secondary">View PDF (arXiv)</a>
+        </div>
+      </div>
+    </details>
+
+    <!-- Undergraduate Research Section -->
+    <h2 class="section-title" style="margin-top: 3.5rem;">Undergraduate Research</h2>
 
     <!-- SUB-CATEGORY: Conference Proceedings -->
     <h3 class="sub-section-title">Conference Proceedings</h3>
@@ -306,6 +417,36 @@
     </details>
 
   </main>
+
+  <script>
+    function filterPublications() {
+      const query = document.getElementById('pubSearch').value.toLowerCase();
+      const items = document.querySelectorAll('.publication-item');
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        const tags = (item.getAttribute('data-tags') || '').toLowerCase();
+        if (text.includes(query) || tags.includes(query)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function setTagFilter(tag, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const searchInput = document.getElementById('pubSearch');
+      if (tag === 'all') {
+        searchInput.value = '';
+      } else {
+        searchInput.value = tag;
+      }
+      filterPublications();
+    }
+  </script>
 
 </body>
 </html>
